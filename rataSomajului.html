@@ -1,4 +1,12 @@
-body {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Explorer</title>
+    <style>
+        body {
     background-image: url('fundal5.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -119,28 +127,68 @@ nav a {
     text-decoration: none;
 }
 
-#search-container {
-    flex: 1 1 60%;
-    margin-right: 2rem;
-}
 
-#search-form {
-    display: flex;
-}
-
-#search-box {
-    flex: 1;
-    padding: 0.5rem;
-    margin-right: 1rem;
-}
 
 .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-left: 1250px;
     /* Aliniere în partea de sus a containerului */
-    height: 2000px;
+    height: 800px;
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
 }
+.main-content{
+    color: white;
+    align-items: center;
+}
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <header>
+        <h1>Șomajul în România</h1>
+       
+    </header>
+
+
+    <main>
+
+        <div class="main-container">
+            <div class="main-content">
+                <h1>Rata șomajului</h1>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="vertical-menu">
+                <a href="home.html" class="button">Despre șomaj</a>
+                <a href="somajPeJudete.html" class="button">Șomajul pe județe</a>
+                <a href="nivelDeEducație.html" class="button">Nivel de educație</a>
+                <a href="grupeDeVarsta.html" class="button">Grupe de vârstă</a>
+                <a href="mediu.html" class="button">Mediu</a>
+                <a href="perioadaDeTimp.html" class="button">Perioadă de timp</a>
+                <a href="buget.html" class="button">Bugetul</a>
+                <a href="rataSomajului.html" class="button">Rata șomajului</a>
+                <a href="protectieSociala.html" class="button">Protecție socială</a>
+                <a href="munca.html" class="button">Muncă</a>
+                <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
+                <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
+                <a href="predictiiRate.html" class="button">Predicții șomaj</a>
+                <a href="statisticiVizualizare.html" class="button">Vizualizare</a>
+            </div>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

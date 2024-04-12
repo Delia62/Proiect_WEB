@@ -1,5 +1,13 @@
-body {
-    background-image: url('fundal5.jpg');
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Explorer</title>
+    <style>
+        body {
+    background-image: url('fundal8.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -139,8 +147,60 @@ nav a {
     justify-content: space-between;
     align-items: flex-start;
     /* Aliniere în partea de sus a containerului */
-    height: 2000px;
+    height: 250px;
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
 }
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <header>
+        <h1>Administrare aplicație</h1>
+        <nav>
+            <ul>
+                <div class="top-buttons">
+                    <a href="home.html" class="button">Logout</a>
+                </div>
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="search-container">
+            <form id="search-form">
+                <input type="text" id="search-box" placeholder="Search datasets...">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <div class="main-container">
+            <div class="main-content">
+            </div>
+        </div>
+
+Aici nu am creat paginile pentru export, backup si adrese de email. Nu stiu daca trebuie neaparat create sau face din back.
+La update am facut pagina ca sa poti alege unde faci update si ce vrei sa pui.
+        <div class="container">
+            <div class="vertical-menu">
+                <a href="update.html" class="button">Update info</a> 
+                <a href="exportBazaDeDate.html" class="button">Export bază de date</a>
+                <a href="exportMinister.html" class="button">Export date fisiere Minister</a>
+                <a href="backup.html" class="button">Backup</a>
+                <a href="adreseEmail.html" class="button">Adrese email</a>
+            </div>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

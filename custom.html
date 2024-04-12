@@ -1,4 +1,12 @@
-body {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Explorer</title>
+    <style>
+        body {
     background-image: url('fundal5.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -49,26 +57,6 @@ header {
     border-radius: 5px;
 }
 
-.vertical-menu {
-    width: 200px;
-    background-color: #f0f0f0;
-    margin-top: 100px;
-
-    height: 100%;
-    /* Menținerea înălțimii complete a containerului */
-}
-
-.vertical-menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #000;
-
-}
-
-.vertical-menu a:hover {
-    background-color: #ccc;
-}
 
 .top-buttons {
     position: right;
@@ -81,66 +69,57 @@ header {
     z-index: 999;
     /* Asigură poziționarea deasupra conținutului */
 }
-
-.top-button {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 10px;
-}
-
-h1 {
-    margin: 0;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav li {
-    margin-bottom: 0;
-    margin-right: 1rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-#search-container {
-    flex: 1 1 60%;
-    margin-right: 2rem;
-}
-
-#search-form {
-    display: flex;
-}
-
-#search-box {
-    flex: 1;
-    padding: 0.5rem;
-    margin-right: 1rem;
-}
-
 .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-left: 1250px;
     /* Aliniere în partea de sus a containerului */
-    height: 2000px;
+    height: 800px;
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
 }
+.main-content{
+    color: white;
+    align-items: center;
+}
+
+
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <header>
+        <h1>Informații personalizate</h1>
+        <nav>
+            <ul>
+                <div class="top-buttons">
+                    <a href="custom1.html" class="button">Back</a>
+                </div>
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <div class="main-container">
+            <div class="main-content">
+                
+                <h3>  -- aici cumva ar trebui sa apară filtratea informatiilor din tabel pe care utilizatorul introduce in pagina anterioara</h3>
+            </div>
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
