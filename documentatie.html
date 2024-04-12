@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Documentatie HTML</title>
+  <style>
+    html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+.title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+body {
+    max-width: 21cm;
+    margin: auto;
+    line-height: 1.6;
+    font-weight: 300;
+    font-family: Roboto,sans-serif
+}
+
+header>h1 {
+    margin: 0;
+    font-size: 3em;
+    padding-top: 4em
+}
+
+h1,h2,h3 {
+    letter-spacing: .0375em
+}
+
+h1,h2 {
+    color: #4b0061
+}
+
+h2 {
+    margin-top: 3em
+}
+
+h3 {
+    margin-top: 2.5em
+}
+
+@media screen and (max-width: 577px) {
+    div.status {
+        width:auto
+    }
+}
+
+@media screen and (max-width: 980px) {
+    body {
+        margin:0 2em
+    }
+}
+  </style>
+</head>
+
+<body prefix="schema: http://schema.org">
+
+  <div class="title"> Documentație Unemployment Explorer</div>
+
+  <section id="introduction" role="doc-introduction">
+    <h2>Introducere</h2>
+    <p>
+      Recurgând la un API REST/GraphQL propriu, să se dezvolte un instrument Web de vizualizare și de comparare multi-criterială
+     (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.) a datelor publice referitoare la șomajul din România 
+     pe ultimele L luni (minim 12). Statisticile, plus vizualizările generate – minim 3 maniere, plus cele cartografice pe baza unor servicii 
+     Web de profil – vor putea fi exportate în formatele CSV, SVG și PDF. 
+    </p>
+  </section>
+
+  <section id="structure">
+    <h2>Structura</h2>
+    <p>
+        Platforma este compusă din 16 pagini HTML. Fiecare pagină a fost creată așa încât să ofere userului o interacțiune cât mai ușoară. 
+        Navigarea între pagini este asigurată de un meniu de navigație permanent, situat în partea dreaptă
+        a fiecărei pagini. În continuare, sunt descrise în detaliu paginile și funcționalitățile disponibile.
+    </p>
+
+    <section id="home.html">
+      <h3><code>home.html</code></h3>
+      <p>  
+        Pagina home este prima pagină care apare la deschiderea aplicației. Aceasta are un titlu, o bară de navigare unde userul poate
+        căuta mai ușor informații și un meniu ce face legătura cu toate celelalte paginii.
+        De asemenea, în partea de sus se găsesc două butoane, unul pentru login ce este specific administratorului și unul personalizat 
+        în care userul poate filtra mai ușor informațiile pe care dorește să le găsească. Acestea pot fi filtrate după nivelul de educație, grupe de vârstă, 
+        perioadă de timp, buget, mediu, rata șomajului pe județe, protecție socială, muncă, Ministerul Muncii, comparare cu alte țări, predicții de rate de șomaj în viitor,
+        view-er custom, statisticile și vizualizările adaptate după preferințe, reprezentări pe bază de grafuri și alegerea pe câte luni să se facă filtrarea .
+        
+      </p>
+    </section>
+
+    <section id="admin.html">
+      <h3><code>admin.html</code></h3>
+      <p>
+        Admin.html este pagina prin care administratorul, după ce s-a logat, poate efectua mai multe operații.
+        Ca funcționalități, pagina ofera posibilitatea de a face update pentru orice informație, poate adăuga fișiere noi
+        pentru baza de date, export bază de date sau backup sau export date fișiere Minister. De asemenea administratorul poate colecta adrese de email
+        și poate configura mesajul din newsletter.
+      </p>
+    </section>
+
+    <section id="nivelDeEducație.html">
+      <h3><code>nivelDeEducație.html</code></h3>
+      <p>
+        Această pagină conține cele mai recente informații fiind structurate pe județe. Ca toate celelalte pagini, are un meniu  în partea din dreapta a ecranului
+         ce face legătura cu celelalte pagini. Dacă utilizatorul dorește să afle informații doar despre un anumit județ într-o anumită perioadă de timp, poate 
+         accesa butonul "custom" din pagina home unde poate selecta informațiile după dorințele proprii.
+
+      </p>
+    </section>
+ 
+  <section id="grupeDeVarsta.html">
+    <h3> <code>grupeDeVarsta.html</code></h3>
+    <p>
+      La fel ca pagina nivelDeEducație, această pagină oferă cele mai recente informații fiind structurate în funcție de județ. 
+    </p>
+  </section>
+
+  <section id="perioadaDeTimp.html">
+   <h3> <code>perioadaDeTimp.html</code><br>
+        <code>buget.html</code><br>
+        <code>mediu.html</code><br>
+        <code>rataSomajului.html</code><br>
+        <code>protectieSociala.html</code><br>
+        <code>munca.html</code><br>
+        </h3>
+    <p>
+      Toate aceste paginii conțin cele mai recente informații fiind personalizate în funcție de numele acesteia. Ca și structură, toate sunt organizate la fel, au meniul de navigație în partea
+      dreapta, titlu în partea de sus și informații detaliate și diagrame în funcție de alegerea paginii. Utilizatorii se pot întoarce oricând înapoi la pagina principală 
+      din meniu apăsând pe butonul de "home".
+
+    </p>
+  </section>
+
+  <section id="ministerulMuncii.html">
+    <h3> <code>ministerulMuncii.html</code></h3>
+    <p>
+      MinisterulMuncii este pagina ce oferă utilizatorilor o gamă largă de informații și resurse relevante pentru persoanele afectate de șomaj,
+      precum și pentru angajatori și alte părți interesate.<br>
+      Principalele informații pe care le poți găsi sunt: <br> 
+      <strong>Statistici despre șomaj:</strong> Date actualizate și grafice care prezintă nivelurile de șomaj în țară, ratele de șomaj pe diferite categorii 
+      demografice și informații despre tendințele recente.<br>
+
+      <strong>Programe și beneficii:</strong> Informații despre programele guvernamentale destinate celor șomeri, inclusiv asistență financiară, 
+      formare profesională, programe de reconversie și alte beneficii sociale.<br>
+      
+      <strong>Cum să obțineți șomaj: </strong>Ghiduri și instrucțiuni despre cum să solicitați beneficii de șomaj, documentele necesare, procedurile de înregistrare și termenele limită.<br>
+      
+    <strong> Resurse de căutare a locurilor de muncă:</strong> Linkuri către portaluri de locuri de muncă online, agenții de recrutare, târguri de carieră și alte
+        resurse utile pentru cei care caută un nou loc de muncă.<br>
+      
+      <strong> Informații pentru angajatori: </strong>Ghiduri pentru angajatori despre cum să-și asiste angajații în situații de șomaj, inclusiv informații despre disponibilitatea
+        de programe de sprijin pentru angajatori care intenționează să facă reduceri de personal sau să ofere asistență în reintegrarea angajaților concediați.<br>
+      
+      <strong>Legislație și reglementări: </strong>Resurse despre legislația și reglementările privind șomajul, inclusiv drepturile și responsabilitățile angajaților și
+        angajatorilor, procedurile de concediere și criteriile de eligibilitate pentru beneficiile de șomaj.<br>
+      
+      <strong> Contacte și centre de asistență: </strong>Informații de contact pentru centrele de asistență pentru șomaj, agențiile guvernamentale relevante și alte 
+      instituții sau organizații care oferă sprijin în această privință.<br>
+      
+      <strong> Știri și actualizări: </strong>Secțiuni dedicate la ultimele știri și actualizări legate de politicile și programele de ocupare a forței de muncă, 
+      schimbările legislative și alte evenimente relevante pentru șomaj și ocuparea forței de muncă.<br>
+
+    </p>
+  </section>
+
+  <section id="comparareCuAlteTari.html">
+    <h3> <code>comparareCuAlteTari.html</code></h3>
+    <p>
+      Această pagină oferă o analiză cuprinzătoare și comparativă între două țări, a ratelor acestora inclusiv factori care influențează nivelurile de șomaj în 
+      fiecare țară. De asemenea, sunt reprezentate grafice și diagrame vizuale care prezintă evoluția ratei de șomaj în timp
+      pentru a facilita înțelegerea și analiza datelor.
+
+    </p>
+  </section>
+
+  <section id="predictiiRate.html">
+    <h3> <code>predictiiRate.html</code></h3>
+    <p>
+        Deși acest lucru implică incertitudine și riscuri, pagina predictiiRate conține informații despre studiul evoluției ratei de șomaj într-o anumită țară 
+        în trecut și poate oferi indicii cu privire la tendințele viitoare. Identifică modulele și factorii care au influențat ratele de șomaj în trecut oferă
+         o bază pentru prognozele viitoare. Însă trebuie ținut cont că rezultatele reale pot varia în funcție de evoluția economică, politicile guvernamentale și alți
+         factori imprevizibili.
+
+    </p>
+    </section>
+    
+    <section id="statisticiVizualizare.html">
+     <h3> <code>statisticiVizualizare.html</code></h3>
+      <p>
+        statisticiVizualizare este pagina ce oferă utilizatorul posibilitatea de a vizualiza informațiile și statisticiile în manieră de tabel, 
+        grafic plăcintă, grafic undă, grafic coloane și cartografice. Acestea vor putea fi exportate în format CSV, SVG sau PDF.
+
+      </p>
+    </section>
+    <section id="custom1.html">
+      <h3> <code>custom1.html</code></h3>
+       <p>
+         Pagina home conține un buton "cutom" ce deschide pagina custom1.html. Aceasta oferă utilizatorului posibilitatea de a selecta într-un tabel infomațiile pe care
+          dorește să le afle în funție de mai multe criterii. Custom este pagina ce oferă informațiile personalizate după filtrarea preferințelor utilizatorului. 
+ 
+       </p>
+     </section>
+     <section id="custom.html">
+      <h3> <code>custom.html</code></h3>
+       <p>
+         Custom este pagina ce oferă informațiile personalizate după filtrarea preferințelor utilizatorului din pagina custom1. De asemnea, se poate face legătura cu 
+         celelalte pagini prin intermediu meniului de navigație prezent pe fiecare pagină. 
+ 
+       </p>
+     </section>
+
+
+  <section id="proiectare">
+    <h2>Proiectarea</h2>
+      <p>
+        Bindiu Ana-Maria
+      </p>
+      <p>
+       Iacobuț Denisa-Delia
+      </p>
+      <p>
+        Proiectul: https://github.com/Delia62/Proiect_WEB
+      </p>
+  </section>
+
+</body>
+
+</html>
