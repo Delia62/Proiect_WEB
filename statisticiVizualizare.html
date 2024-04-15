@@ -32,7 +32,7 @@
                         <a href="home.html" class="button">Acasa</a>
         
                         <input type="checkbox" id="dropdown-checkbox" >
-                        <label for="dropdown-checkbox" id="dropdown-label">Vizualizare somajul in functie de...</label>
+                        <label for="dropdown-checkbox" class="dropdown-label">Vizualizare somajul in functie de...</label>
                                 
                             <a href="somajPeJudete.html" class="button dropdown-element">Șomajul pe județe</a>
                             <a href="nivelDeEducație.html" class="button dropdown-element">Nivel de educație</a>
@@ -136,12 +136,12 @@
                 <label for="varsta">Grupă de vârstă:</label>
                 <select name="varsta" id="varsta">
                     <option value="0">Toate</option>
-                    <option value="1"><18</option>
+                    <option value="1">sub 18</option>
                     <option value="2">18-25</option>
                     <option value="3">26-35</option>
                     <option value="4">36-45</option>
                     <option value="5">46-55</option>
-                    <option value="6">>55</option>
+                    <option value="6">peste 55</option>
                 </select>
             </div>
         
@@ -165,19 +165,19 @@
                 </div>
 
                 <div class="filter-element">
-                    <label for="perioadaDeTimp">Perioadă de timp:</label>
+                    <label for="perioadaDeTimpStart">Perioadă de timp:</label>
                     <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2012">
                     <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2024">
                 </div>
 
                 <div class="filter-element">
-                    <label for="Venit">Venit:</label>
+                    <label for="VenitStart">Venit:</label>
                     <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
                     <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
                 </div>
 
                 <div class="filter-element" >
-                    <label for="Rata Somaj">Rata Somaj</label>
+                    <label for="RataSomajStart">Rata Somaj</label>
                     <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
                     <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
                 </div>

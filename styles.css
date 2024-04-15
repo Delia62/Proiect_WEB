@@ -155,7 +155,7 @@ nav a  {
     left: -9999px;
 }
 
-#dropdown-label {
+.dropdown-label {
     display: block;
     padding: 10px;
     background-color: #f0f0f0;
@@ -169,7 +169,7 @@ nav a  {
 
 }
 
-#dropdown-label:hover {
+.dropdown-label:hover {
     background-color: #ccc;
 }
 
