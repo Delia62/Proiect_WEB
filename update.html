@@ -5,136 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unemployment Explorer</title>
-    <style>
-        body {
-            background-image: url('fundal5.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            overflow-y: scroll;
-            /* Permitere derulare verticală a întregii pagini */
-            position: relative;
-            /* Necesar pentru poziționare absolută */
-        }
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #ddd;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-
-        .save-button {
-            display: inline-block;
-            padding: 10px 20px; 
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none; 
-        }
-
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            padding: 2rem;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1490px;
-            margin: 0 auto;
-        }
-
-        .button {
-            display: block;
-            width: 174px;
-            border: none;
-            background-color: white;
-            color: black;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 3px 2px;
-            cursor: pointer;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        
-
-        .top-buttons {
-            position: right;
-            margin-right: 100px;
-            width: 150px;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: row;
-            z-index: 999;
-            /* Asigură poziționarea deasupra conținutului */
-        }
-
-        .top-button {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            margin-right: 20px;
-            cursor: pointer;
-            font-size: 10px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        
-
-
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-left: 1250px;
-            /* Aliniere în partea de sus a containerului */
-            height: 800px;
-            /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
-            position: relative;
-            /* Necesar pentru poziționare absolută */
-        }
-        .main-content{
-            color: white;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="update_styles.css">
 </head>
 
 
@@ -157,42 +29,44 @@
 
     <main>
 
-        
-        <div id="main-container">
-            <div id="main-content">
-            </div>
-        </div>
+    
 
 
 
 
         <div class="main-container">
             <div class="main-content">
-                <h1>Update informații</h1>
+                <h1>Update fisiere in baza de date</h1>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Locație</th>
-                    <th>Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Fișier:</td>
-                    <td><input type="text" id="fisier"></td>
-                </tr>
-                <tr>
-                    <td>Informație:</td>
-                    <td><input type="text" id="info"></td>
-                </tr>
-               
-            </tbody>
-        </table>
+       
     
-        <button class="save-button">Save</button>
-        
+        <div class="main-container">
+            <div class="main-content">
+                <form action="update.php" method="post" enctype="multipart/form-data">
+                    <label for="file">Selecteaza fisierul:</label><br>
+                    <input type="file" id="file" name="file"><br><br>
+                    <input type="submit" value="Upload" name="submit">
+                </form>
+            </div>
+        </div>
+
+ 
+        <div class="main-container">
+            <div class="main-content">
+                <form>
+                <h1>Download files from the database</h1>
+                <select name="file">
+                    <option value="unemployment">Unemployment</option>
+                    <option value="population">Population</option>
+                    <option value="gdp">GDP</option>
+                    <option value="education">Education</option>
+                    <option value="health">Health</option>
+                </select>
+                <input type="submit" value="Download" name="submit">
+                </form>
+            </div>
+        </div>
 
        
 
