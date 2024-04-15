@@ -355,7 +355,6 @@
                         </li>
                     </ul>
                 </li>
-                
                 <li id="buget"><b>Bugetul</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -365,7 +364,6 @@
                         </li>
                     </ul>
                 </li>
-                
                 <li id="rataSomajului"><b>Rata șomajului</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -384,7 +382,6 @@
                         </li>
                     </ul>
                 </li>
-                
                 <li id="munca"><b>Muncă</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -394,7 +391,6 @@
                         </li>
                     </ul>
                 </li>
-                
                 <li id="ministerulMuncii"><b>Ministerul Muncii</b></li>
                 <li style="list-style: none">
                     <ul> 
@@ -425,14 +421,11 @@
                         <li><b>Știri și actualizări: </b>Secțiuni dedicate la ultimele știri și actualizări legate de politicile și programele de ocupare a forței de muncă, 
                             schimbările legislative și alte evenimente relevante pentru șomaj și ocuparea forței de muncă.
                         </li>
-
                         <li class="pictures" style="list-style: none"><img alt="streetSignsRomania"
                                                                            src="images/testList.png" width=800
                         ></li>
-                       
                     </ul>
                 </li>
-
                 <li id="comparareAlteTari"><b>Comparație cu alte țări</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -446,7 +439,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li id="predictiiRate"><b>Predicții șomaj</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -458,7 +450,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li id="statisticiVizualizare"><b>Statistici și Vizualizare</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -469,7 +460,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li id="about"><b>Pagina informativa</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -490,7 +480,6 @@
                                                                            width=800
                                                                            ></li>
                     </ul>
-             
                 <li id="admin"><b>Pagina Administratorului</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -505,10 +494,8 @@
                         <li class="pictures" style="list-style: none"><img alt="overview" src="images/admin2.png"
                                                                            width=800>
                         </li>
-                        
                     </ul>
                 </li>
-                
                 <li id="update"><b>Pagina de update date</b></li>
                 <li style="list-style: none">
                     <ul>
@@ -518,8 +505,6 @@
                                                                            width=800
                                                                            ></li>
                     </ul>
-
-
                     <li id="custom"><b>Pagina de custom</b></li>
                     <li style="list-style: none">
                     <ul>
@@ -530,7 +515,6 @@
                                                                            width=800
                                                                            ></li>
                     </ul>
-
                     <li id="custom1"><b>Custom1</b></li>
                     <li style="list-style: none">
                     <ul>
@@ -601,7 +585,6 @@
                         <li>
                             Utilizatorul trebuie să fie autentificat.
                         </li>
-                        
                     </ul>
                 </section>
                 <section id="administrator">
@@ -625,7 +608,6 @@
                         <li>
                             Utilizatorul trebuie să fie autentificat.
                         </li>
-                        
                     </ul>
                 </section>
                 <section id="logout">
