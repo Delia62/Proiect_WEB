@@ -53,13 +53,11 @@
                         <li><a href="#ministerulMuncii">3.1.13 Ministerul Muncii </a></li>
                         <li><a href="#comparareAlteTari">3.1.14 Comparare cu alte țări </a></li>
                         <li><a href="#predictiiRate">3.1.15 Predicții șomaj </a></li>
-                        <li><a href="#statisticiVizualizare">3.1.16 Statistici și Vizualizare </a></li>
+                        <li><a href="#statisticiVizualizare">3.1.16 Vizualizare șomaj </a></li>
                         <li><a href="#about">3.1.17 Pagina informativa </a></li>
                         <li><a href="#help">3.1.18 Pagina de ajutor </a></li>
                         <li><a href="#admin">3.1.19 Pagina administratorului </a></li>
                         <li><a href="#update">3.1.20 Pagina de update date </a></li>
-                        <li><a href="#custom">3.1.21 Pagina de custom </a></li>
-                        <li><a href="#custom1">3.1.22 Custom1 </a></li>
                     </ul>
                 </li>
                 <li><a href="#hardware-interface">3.2 Interfața Hardware </a></li>
@@ -210,12 +208,12 @@
             Fiecare utilizator va avea acces la urmatoarele funcționălități:
             <ul>
                 <li>să consulte pagina "Home" și noutățile disponibile</li>
+                <li>să acceseze butonul "Vizualizare șomaj în funcție de.." de unde poate alege din paginile de mai jos</li>
                 <li>să acceseze paginile "Șomaj pe județe", "Nivel de educație", "Grupe de vârstă",
                     "Mediu", "Perioadă de timp", "Buget", "Rata șomajului", "Protecție socială", "Muncă",
                     "Ministerul Muncii", "Predicții șomaj" pentru a vizualiza informații specifice fiecărei categorii</li>
                 <li>să acceseze pagina "Comparație cu alte țări" unde poate alege două țări între care să se facă comparația.</li>
-                <li>să acceseze pagina "Vizualizare" unde poate vizualiza informațiile în mai multe moduri</li>
-                <li>să acceseze pagina "Custom" de unde poate filtra mai ușor datele pe care dorește să le afle</li>
+                <li>să acceseze pagina "Vizualizare șomaj" unde poate filtra informațiile după dorințele proprii.</li>
                 <li>să acceseze pagina "Despre" pentru a accesa scurtă descriere a paginii web</li>
                 <li>să acceseze pagina "Ajutor" pentru a beneficia de sfaturi în vederea utilizării aplicației</li>
                 <li>dacă este <b>autentificat</b>, să acceseze pagină "Update" unde poate aduce modificări aplicației</li>
@@ -249,8 +247,7 @@
                 cât și cele două pagini ce oferă detalii și sfaturi cu privire la aplicație, "Despre" și "Ajutor".
                     Mai mult, acesta poate gestiona adresele de email, poate aduce modificări bazei de date și poate vizualiza activitatea aplicației.
                 </li>
-                <li>Utilizatorii care nu sunt  <b> autentificați </b> pot să vizualizeze tot felul de informații și date referitoare la șomajul din România
-                    și pot face un custom-view în funcție de preferințele fiecăruia.
+                <li>Utilizatorii care nu sunt  <b> autentificați </b> pot să vizualizeze tot felul de informații și date referitoare la șomajul din România.
                 </li>
             </ul>
         </section>
@@ -282,8 +279,6 @@
                         <li>Aceasta reprezintă meniul de navigare către fiecare pagină a aplicației, prezent pe fiecare
                             pagină totodată.
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="login" src="images/navBar.png" width=800
-                        ></li>
                     </ul>
                 </li>
                 <li id="login-page"><b>Pagina de autentificare</b></li>
@@ -295,28 +290,18 @@
                             credențiale <b>valide</b>, urmând să acționeze butonul <b>Login</b>.
                             <li>  Butonul de <b>"Back"</b> face redirecționarea în pagina <b>"Home"</b>. </li>
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="login" height="400"
-                                                                           src="images/loginPage.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="home-page"><b> Pagina de acasă</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina are rolul de a prezenta informații generale despre șomajul din România din ultimele 12 luni.</li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/homePage.png"
-                                                                           width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="somajPeJudet"><b>Șomajul pe județe</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina oferă date și informații despre șomajul din România în funcție de fiecare județ în parte. De asemnea, datele sunt referitoare la ultimele 12 luni.
-                            Dacă utilizatorul dorește să afle date doar despre un anumit județ într-o anumită perioadă de timp, poate 
-                            accesa butonul <b>"Custom"</b> din pagina home unde poate selecta informațiile după dorințele proprii.
-                        </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/learn1.png" width=800>
                         </li>
                     </ul>
                 </li>
@@ -324,71 +309,47 @@
                 <li style="list-style: none">
                     <ul>
                         <li> Această pagină conține cele mai recente informații despre nivelul de educație din România.</li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="i mages/rulesPage.png"
-                                                                           width=800>
-                        </li>
                     </ul>
                 <li id="grupeDeVarsta"><b>Grupe de vârstă</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina conține date despre toate grupele de vârstă din România.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="mediu"><b>Mediu</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina conține date despre tipul de zone din România și statistici despre șomaj în funcție de mediu.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="perioadaDeTimp"><b>Perioadă de timp</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina oferă informații despre șomaj în funcție de mai multe perioade de timp</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="buget"><b>Bugetul</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Această pagină oferă date atât despre bugetul pe care România îl are, cât și despre bugetul fiecărui județ.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="rataSomajului"><b>Rata șomajului</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina conține informații despre rata șomajului din România. Datele fiind reprezentate în mai multe moduri.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="protectieSociala"><b>Protecție socială</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina oferă informații generale și cât mai recente despre protecția socială din România. </li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="munca"><b>Muncă</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Această pagină conține date generale despre munca din România. Atât despre locurile libere cât și o statistică a demisionărilor.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="ministerulMuncii"><b>Ministerul Muncii</b></li>
@@ -421,9 +382,6 @@
                         <li><b>Știri și actualizări: </b>Secțiuni dedicate la ultimele știri și actualizări legate de politicile și programele de ocupare a forței de muncă, 
                             schimbările legislative și alte evenimente relevante pentru șomaj și ocuparea forței de muncă.
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSignsRomania"
-                                                                           src="images/testList.png" width=800
-                        ></li>
                     </ul>
                 </li>
                 <li id="comparareAlteTari"><b>Comparație cu alte țări</b></li>
@@ -434,9 +392,6 @@
                             pentru a facilita înțelegerea și analiza datelor.</li>
                         <li>Utilizatorul poate alege, cu ajutorul unui tabel, două țări între care să facă comparația. </li>
                         <li>După apăsarea butonului <b>"Save" </b>informațiile sunt generate și afișate pe ecran.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
                 <li id="predictiiRate"><b>Predicții șomaj</b></li>
@@ -445,19 +400,13 @@
                         <li>Deși acest lucru implică incertitudine și riscuri, pagina conține informații despre studiul evoluției ratei de șomaj din țară 
                             în trecut și oferă indicii cu privire la tendințele viitoare. Însă trebuie ținut cont că rezultatele reale pot varia în funcție de evoluția economică, politicile guvernamentale și alți
                              factori imprevizibili.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
                     </ul>
                 </li>
-                <li id="statisticiVizualizare"><b>Statistici și Vizualizare</b></li>
+                <li id="statisticiVizualizare"><b>Vizualizare șomaj</b></li>
                 <li style="list-style: none">
                     <ul>
-                        <li> Această pagină oferă utilizatorul posibilitatea de a vizualiza informațiile și statisticiile în manieră de tabel, 
-                            grafic plăcintă, grafic undă, grafic coloane și cartografic. De asemenea, acestea vor putea fi exportate în format CSV, SVG sau PDF.</li>
-                        <li class="pictures" style="list-style: none"><img alt="streetSigns"
-                                                                           src="images/streetSigns.png" width=800>
-                        </li>
+                        <li> Această pagină oferă utilizatorul posibilitatea de a filtra datele și informațiile dorite după județ, nidel de educație, vârstă, gen, mediu, perioadă de timp, rata șomajulu și tipul de grafic</li>
+                        <li>Cu ajutorul butonului "Filtrează" informațiile sunt afișate pe ecran</li>
                     </ul>
                 </li>
                 <li id="about"><b>Pagina informativa</b></li>
@@ -467,8 +416,6 @@
                             tehnologii
                             utilizate, numele autorilor, scopul aplicației și bibliografia.
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/aboutPage.png" width=800>
-                        </li>
                     </ul>
                 <li id="help"><b>Pagina de ajutor</b></li>
                 <li style="list-style: none">
@@ -476,23 +423,14 @@
                         <li>Pagina are rolul de a prezenta câteva sfaturi pentru a putea beneficia de o experiență
                             completă pe aplicație.
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/helpPage.png"
-                                                                           width=800
-                                                                           ></li>
                     </ul>
                 <li id="admin"><b>Pagina Administratorului</b></li>
                 <li style="list-style: none">
                     <ul>
                         <li>Pagina afișează interfață pentru <b>adminstrator</b>.</li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/admin1.png"
-                                                                           width=800>
-                        </li>
                         <li>Administratorul are posibilitatea de a adauga sau modifica
                             datele și informațiile, de a face o copie de rezervă a datelor și de a face exportul diferitelor date.
                         <li> Butonul de <b>"Logout"</b> face redirecționarea în pagina <b>"Home"</b>. </li>
-                        </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/admin2.png"
-                                                                           width=800>
                         </li>
                     </ul>
                 </li>
@@ -501,32 +439,7 @@
                     <ul>
                         <li> Prin intermediul acestei pagini, administratorul poate alege ce modificări să fie făcute și unde.
                         </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/helpPage.png"
-                                                                           width=800
-                                                                           ></li>
                     </ul>
-                    <li id="custom"><b>Pagina de custom</b></li>
-                    <li style="list-style: none">
-                    <ul>
-                        <li>Custom este pagina ce oferă informațiile personalizate după filtrarea preferințelor utilizatorului din pagina <b>"custom1"</b>.
-                        <li>   Butonul de <b>"Back"</b> face redirecționarea în pagina <b>"Home"</b>. </li>
-                        </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/helpPage.png"
-                                                                           width=800
-                                                                           ></li>
-                    </ul>
-                    <li id="custom1"><b>Custom1</b></li>
-                    <li style="list-style: none">
-                    <ul>
-                        <li> Pagina <b>"Home"</b> conține un buton <b>"Custom"</b> ce deschide pagina <b>"Custom1"</b>. Aceasta oferă utilizatorului posibilitatea de a filtra cu ajutorul unui tabel 
-                            informațiile pe care acesta dorește să le afle.
-                        <li> Butonul de <b>"Back"</b> face redirecționarea în pagina <b>"Custom"</b>.  </li>
-                        </li>
-                        <li class="pictures" style="list-style: none"><img alt="overview" src="images/helpPage.png"
-                                                                           width=800
-                                                                           ></li>
-                    </ul>
-            </ul>
             <section id="hardware-interface">
                 <h4>3.2 Interfața Hardware</h4>
                 <p>
@@ -540,8 +453,7 @@
                 <p>
                     Cerințele minime de software includ un browser funcțional, compatibil cu HTML5 și cu JavaScript.
                 <h5>Postgres Database</h5>
-                Aceasta reprezintă baza de date în care stocăm informații despre fiecare utilizator, view-custom,
-                și activitatea acestora într-o memorie cache.
+                Aceasta reprezintă baza de date în care stocăm informații despre fiecare utilizator.
             </section>
             <section id="communication-interface">
                 <h4>3.4 Interfața de comunicare</h4>
@@ -573,7 +485,7 @@
                     <h5 id="utilizatori-1">4.2.1 Descriere și generalități</h5>
                     Secțiunea <b>Utilizatori</b> este destinată
                     <b>adminului</b>, care îi oferă posibilitatea
-                    de a vizualiza custom-view setat de un utilizator. 
+                    de a vizualiza activitatea aplicației. 
                     <h5 id="utilizatori-2">4.2.2 Actualizarea informațiilor</h5>
                     <ul>
                         <li>
