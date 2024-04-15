@@ -8,7 +8,7 @@ body {
     padding: 0;
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column; /* ... la cate chestii avem, idk  */
     overflow-y: scroll;
     /* Permitere derulare verticală a întregii pagini */
     position: relative;
@@ -20,6 +20,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
+    
+    justify-content: space-between;
 }
 
 header {
@@ -122,6 +124,7 @@ nav a {
 #search-container {
     flex: 1 1 60%;
     margin-right: 2rem;
+    
 }
 
 #search-form {
@@ -139,7 +142,7 @@ nav a {
     justify-content: space-between;
     align-items: flex-start;
     /* Aliniere în partea de sus a containerului */
-    height: 2000px;
+    height: 800px;
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
