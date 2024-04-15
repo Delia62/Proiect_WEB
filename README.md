@@ -155,7 +155,6 @@
                  Informatică a Universității Alexandru Ioan Cuza. 
                  Scopul acestui document este acela de a prezenta o descriere detaliată a funcționalităților și cerințelor aplicației web.
                  Această aplicație oferă utilizatorilor posibilitatea de vizualizare și de comparare multi-criterială a datelor publice referitoare la șomajul din România. 
-                
             </p>
         </section>
         <section id="conventions">
