@@ -63,7 +63,7 @@ header {
     /* Menținerea înălțimii complete a containerului */
 }
 
-.vertical-menu a {
+.vertical-menu a, #dropdown-div  {
     display: block;
     padding: 10px;
     text-decoration: none;
@@ -71,7 +71,7 @@ header {
 
 }
 
-.vertical-menu a:hover {
+.vertical-menu a:hover, #dropdown-div:hover {
     background-color: #ccc;
 }
 
@@ -119,7 +119,7 @@ nav li {
     margin-right: 1rem;
 }
 
-nav a {
+nav a  {
     color: white;
     text-decoration: none;
 }
@@ -149,4 +149,42 @@ nav a {
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
+}
+
+#dropdown-checkbox[type="checkbox"]{
+    position: absolute;
+    left: -9999px;
+}
+
+#dropdown-label {
+    display: block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+
+
+}
+
+#dropdown-label:hover {
+    background-color: #ccc;
+}
+
+#dropdown-checkbox:checked ~ #dropdown-list .dropdown-element {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ccc;
+}
+
+#dropdown-checkbox:checked ~  #dropdown-list .dropdown-element:hover {
+    background-color: #f0f0f0;
+}
+
+#dropdown-list .dropdown-element {
+    display: none;
 }
