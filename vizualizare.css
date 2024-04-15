@@ -70,3 +70,9 @@
     max-height:80vh; /* Adjust this value as needed */
     overflow-y: auto;
 }
+
+@media screen and (max-width: 600px) {
+    #main-content {
+        width: 20%;
+    }
+}

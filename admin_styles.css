@@ -78,3 +78,34 @@ form input {
 }
 
 
+@media (max-width: 900px) {
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    font-size: small;
+}
+
+header{
+    width: 100%;
+}
+
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .item {
+        width: 100%;
+    }
+    form {
+        padding: 10px; /* Add some padding to the form on smaller screens */
+    }
+
+    form input {
+        width: 80%; /* Make sure the input fields take up the full width of their container on smaller screens */
+    }
+}

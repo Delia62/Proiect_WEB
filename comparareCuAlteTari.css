@@ -34,3 +34,23 @@
     border: none;
     border-radius: 5px;
 }
+
+
+@media (max-width: 900px) {
+    #country-select-header{
+        font-size: 2vh;
+    }
+
+    .label-picker-pair select{
+        width: 100%; /* Change this to 100% so the select fields take up the full width of their container */
+        height: 3vh;
+        font-size: 1.5vh;
+        padding: 0.5vh;
+    }
+
+    #country-select-header button{
+        width: 20%; /* Change this to 100% so the button takes up the full width of its container */
+        height: 3vh;
+        font-size: 1.5vh;
+    }
+}
