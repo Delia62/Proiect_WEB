@@ -5,146 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unemployment Explorer</title>
-    <style>
-        body {
-    background-image: url('fundal5.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    overflow-y: scroll;
-    /* Permitere derulare verticală a întregii pagini */
-    position: relative;
-    /* Necesar pentru poziționare absolută */
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 2rem;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1490px;
-    margin: 0 auto;
-}
-
-.button {
-    display: block;
-    width: 174px;
-    border: none;
-    background-color: white;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 3px 2px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.vertical-menu {
-    width: 200px;
-    background-color: #f0f0f0;
-    margin-top: 100px;
-
-    height: 100%;
-    /* Menținerea înălțimii complete a containerului */
-}
-
-.vertical-menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #000;
-
-}
-
-.vertical-menu a:hover {
-    background-color: #ccc;
-}
-
-.top-buttons {
-    position: right;
-    margin-right: 100px;
-    width: 150px;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: row;
-    z-index: 999;
-    /* Asigură poziționarea deasupra conținutului */
-}
-
-.top-button {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 10px;
-}
-
-h1 {
-    margin: 0;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav li {
-    margin-bottom: 0;
-    margin-right: 1rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-left: 1250px;
-    /* Aliniere în partea de sus a containerului */
-    height: 800px;
-    /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
-    position: relative;
-    /* Necesar pentru poziționare absolută */
-}
-.main-content{
-    color: white;
-    align-items: center;
-}
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vizualizare.css">
 </head>
 
 
@@ -154,38 +16,158 @@ nav a {
 
     <header>
         <h1>Șomajul în România</h1>
-       
+        <nav>
+            <ul>
+                <div class="top-buttons">
+                    <a href="home.html" class="button">Back</a>
+                </div>
+
+            </ul>
+        </nav>
     </header>
 
 
     <main>
 
-        <div class="main-container">
-            <div class="main-content">
-                <h1>Vizualizare</h1>
+
+        <div id="main-container">
+            <div id="main-content">
             </div>
         </div>
 
 
-        <div class="container">
-            <div class="vertical-menu">
-                <a href="home.html" class="button">Despre șomaj</a>
-                <a href="somajPeJudete.html" class="button">Șomajul pe județe</a>
-                <a href="nivelDeEducație.html" class="button">Nivel de educație</a>
-                <a href="grupeDeVarsta.html" class="button">Grupe de vârstă</a>
-                <a href="mediu.html" class="button">Mediu</a>
-                <a href="perioadaDeTimp.html" class="button">Perioadă de timp</a>
-                <a href="buget.html" class="button">Bugetul</a>
-                <a href="rataSomajului.html" class="button">Rata șomajului</a>
-                <a href="protectieSociala.html" class="button">Protecție socială</a>
-                <a href="munca.html" class="button">Muncă</a>
-                <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
-                <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
-                <a href="predictiiRate.html" class="button">Predicții șomaj</a>
-                <a href="statisticiVizualizare.html" class="button">Vizualizare</a>
-            </div>
-        </div>
 
+        <div class="vertical-menu">
+            <div class="filter-menu">
+                <div class="filter-element">
+                    <label for="judet">Județ:</label>
+                    <select name="judet" id="judet">
+                        <option value="0">Toate</option>
+                        <option value="1">Alba</option>
+                        <option value="2">Arad</option>
+                        <option value="3">Argeș</option>
+                        <option value="4">Bacău</option>
+                        <option value="5">Bihor</option>
+                        <option value="6">Bistrița-Năsăud</option>
+                        <option value="7">Botoșani</option>
+                        <option value="8">Brașov</option>
+                        <option value="9">Brăila</option>
+                        <option value="10">Buzău</option>
+                        <option value="11">Caraș-Severin</option>
+                        <option value="12">Călărași</option>
+                        <option value="13">Cluj</option>
+                        <option value="14">Constanța</option>
+                        <option value="15">Covasna</option>
+                        <option value="16">Dâmbovița</option>
+                        <option value="17">Dolj</option>
+                        <option value="18">Galați</option>
+                        <option value="19">Giurgiu</option>
+                        <option value="20">Gorj</option>
+                        <option value="21">Harghita</option>
+                        <option value="22">Hunedoara</option>
+                        <option value="23">Ialomița</option>
+                        <option value="24">Iași</option>
+                        <option value="25">Ilfov</option>
+                        <option value="26">Maramureș</option>
+                        <option value="27">Mehedinți</option>
+                        <option value="28">Mureș</option>
+                        <option value="29">Neamț</option>
+                        <option value="30">Olt</option>
+                        <option value="31">Prahova</option>
+                        <option value="32">Satu Mare</option>
+                        <option value="33">Sălaj</option>
+                        <option value="34">Sibiu</option>
+                        <option value="35">Suceava</option>
+                        <option value="36">Teleorman</option>
+                        <option value="37">Timiș</option>
+                        <option value="38">Tulcea</option>
+                        <option value="39">Vaslui</option>
+                        <option value="40">Vâlcea</option>
+                        <option value="41">Vrancea</option>
+                    </select>
+                </div>
+
+                <div class="filter-element">
+                    <label for="educatie">Nivel de educație:</label>
+                    <select name="educatie" id="educatie">
+                        <option value="0">Toate</option>
+                        <option value="1">Fără studii</option>
+                        <option value="2">Primar</option>
+                        <option value="3">Gimnazial</option>
+                        <option value="4">Liceal</option>
+                        <option value="5">Postliceal</option>
+                        <option value="6">Profesional</option>
+                        <option value="7">Superior</option>
+                    </select>
+            </div>
+
+            <div class="filter-element">
+                <label for="varsta">Grupă de vârstă:</label>
+                <select name="varsta" id="varsta">
+                    <option value="0">Toate</option>
+                    <option value="1"><18</option>
+                    <option value="2">18-25</option>
+                    <option value="3">26-35</option>
+                    <option value="4">36-45</option>
+                    <option value="5">46-55</option>
+                    <option value="6">>55</option>
+                </select>
+            </div>
+        
+
+            <div class="filter-element">
+                <label for="gen">Gen:</label>
+                <select name="gen" id="gen">
+                    <option value="0">Toate</option>
+                    <option value="1">Feminin</option>
+                    <option value="2">Masculin</option>
+                </select>
+            </div>
+
+                <div class="filter-element">
+                    <label for="mediu">Mediu:</label>
+                    <select name="mediu" id="mediu">
+                        <option value="0">Toate</option>
+                        <option value="1">Urban</option>
+                        <option value="2">Rural</option>
+                    </select>
+                </div>
+
+                <div class="filter-element">
+                    <label for="perioadaDeTimp">Perioadă de timp:</label>
+                    <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2012">
+                    <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2024">
+                </div>
+
+                <div class="filter-element">
+                    <label for="Venit">Venit:</label>
+                    <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
+                    <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
+                </div>
+
+                <div class="filter-element" >
+                    <label for="Rata Somaj">Rata Somaj</label>
+                    <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
+                    <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
+                </div>
+
+
+                <div class="filter-element">
+                    <label for="grafType">Tipul de grafic:</label>
+                    <select name="grafType" id="grafType">
+                        <option value="0">Bară</option>
+                        <option value="1">Linie</option>
+                        <option value="2">Cerc</option>
+                    </select>
+                </div>
+
+                <div class="filter-element button-container">
+                    <button id="filterButton">Filtrează</button>
+                </div>
+        
+            </div>
+
+        </div>
     </main>
 
 

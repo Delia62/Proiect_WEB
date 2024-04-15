@@ -8,7 +8,7 @@ body {
     padding: 0;
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column; /* ... la cate chestii avem, idk  */
     overflow-y: scroll;
     /* Permitere derulare verticală a întregii pagini */
     position: relative;
@@ -20,6 +20,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
+    
+    justify-content: space-between;
 }
 
 header {
@@ -52,13 +54,16 @@ header {
 .vertical-menu {
     width: 200px;
     background-color: #f0f0f0;
+    position: fixed;
+    right: 30px;    
     margin-top: 100px;
+    padding: 30px 15px 0 15px;
 
     height: 100%;
     /* Menținerea înălțimii complete a containerului */
 }
 
-.vertical-menu a {
+.vertical-menu a, #dropdown-div  {
     display: block;
     padding: 10px;
     text-decoration: none;
@@ -66,7 +71,7 @@ header {
 
 }
 
-.vertical-menu a:hover {
+.vertical-menu a:hover, #dropdown-div:hover {
     background-color: #ccc;
 }
 
@@ -114,7 +119,7 @@ nav li {
     margin-right: 1rem;
 }
 
-nav a {
+nav a  {
     color: white;
     text-decoration: none;
 }
@@ -122,6 +127,7 @@ nav a {
 #search-container {
     flex: 1 1 60%;
     margin-right: 2rem;
+    
 }
 
 #search-form {
@@ -139,8 +145,66 @@ nav a {
     justify-content: space-between;
     align-items: flex-start;
     /* Aliniere în partea de sus a containerului */
-    height: 2000px;
+    height: 800px;
     /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
     position: relative;
     /* Necesar pentru poziționare absolută */
+}
+
+#dropdown-checkbox[type="checkbox"]{
+    position: absolute;
+    left: -9999px;
+}
+
+#dropdown-label {
+    display: block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+
+
+}
+
+#dropdown-label:hover {
+    background-color: #ccc;
+}
+
+#dropdown-checkbox:checked ~ #dropdown-list .dropdown-element {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ccc;
+}
+
+#dropdown-checkbox:checked ~  #dropdown-list .dropdown-element:hover {
+    background-color: #f0f0f0;
+}
+
+#dropdown-list .dropdown-element {
+    display: none;
+}
+
+#main-container{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+
+    position: relative;
+    width: 82%;
+    height: 90vh;
+
+    
+    background-color: #f0f0f0;
+
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+
+#main-container h2 {
+    margin: 0;
 }
