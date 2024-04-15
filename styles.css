@@ -55,7 +55,7 @@ header {
     background-color: #f0f0f0;
     position: fixed;
     right: 30px;    
-    margin-top: 100px;
+    margin-top: 10px;
     padding: 30px 15px 0 15px;
 
     height: 100%;
@@ -142,11 +142,8 @@ nav a  {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Aliniere în partea de sus a containerului */
-    height: 800px;
-    /* Înălțimea totală a paginii pentru a demonstra funcționalitatea de derulare */
+    height: 900px;
     position: relative;
-    /* Necesar pentru poziționare absolută */
 }
 
 #dropdown-checkbox[type="checkbox"]{
