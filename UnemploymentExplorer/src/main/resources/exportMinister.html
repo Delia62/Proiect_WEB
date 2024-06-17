@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Explorer</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" >
+    <link rel="stylesheet" type="text/css" href="/css/update_styles.css" >
+
+</head>
+
+
+
+<body>
+
+
+    <header>
+        <h1>Administrare aplicație</h1>
+        <nav>
+            <ul>
+                <li>
+                <div class="top-buttons">
+                    <a href="admin.html" class="button">Back</a>
+                </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+    
+
+
+
+
+        <div class="main-container">
+            <div class="main-content">
+                <h1>Exporta baza de date</h1>
+            </div>
+        </div>
+       
+    
+        <div class="main-container">
+            <div class="main-content">
+                <form>
+                    <label >Selecteaza fisierele pe care doriti sa le descarcati:</label><br>
+                    <select name="file">
+                        <option value="unemployment">Unemployment</option>
+                        <option value="population">Population</option>
+                        <option value="unemployment_rate">Unemployment Rate</option>
+                        <option value="unemployment_by_age">Unemployment by Age</option>
+                        <option value="unemployment_by_gender">Unemployment by Gender</option>
+                    </select><br><br>
+                    <label >Selecteaza modalitatea de exportare:</label><br>
+                    <div>
+                    <input type="radio" id="csv" name="file" value="csv">
+                    <label for="csv">CSV</label><br>
+                    <input type="radio" id="json" name="file" value="json">
+                    <label for="json">JSON</label><br>
+                    <input type="radio" id="xml" name="file" value="xml">
+                    <label for="xml">XML</label><br>
+                    </div>
+
+                    <input type="submit" value="Export" name="submit">
+
+                </form>
+            </div>
+        </div>
+
+
+       
+
+    </main>
+
+
+</body>
+
+</html>
