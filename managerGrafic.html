@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/managerGrafic.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> 
+    <script type="module" src="scripts/templateGraph.js" defer></script>
+</head>
+<body>
+    
+
+    <div id="grafic-manager">
+
+        <div id="top-row">
+
+            <div id="button-pack">
+                <button id="button-1">Grid</button>
+                <button id="button-2">Graph</button>
+                <button id="button-3">Mai</button>
+            </div>
+
+            <div id="content-count">
+                <p>[Content count]</p>
+            </div>
+
+            <div id="record-select-spinners">
+                <input type="number" id="starting-record" placeholder="0" min="0" max="0">
+                <input type="number" id="ending-record" placeholder="0" min="0"  max="0">
+            </div> 
+
+
+            <div id="search-bar">
+                <button id="search-button">&#128269</button>
+                <input type="text" id="search" placeholder="Search for info">
+            </div>
+
+            <div id="vertical-line"></div>
+
+            <div id="filter">
+                <button id="filter-button">Filtreaza rezultatele</button>
+                <div id="filter-popup">
+                    abcd popup pt filtru!!
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div id="graf-and-side-column">
+            <div id="grafic-slot">
+                    <canvas id="grafic-canvas"></canvas>
+            </div>
+
+
+            <div id="side-column">
+                <div id="graph-type-select">
+                    <label for="graph-type">Selecteaza tipul de coloane:</label>
+                    <select name="graph-type" id="graph-type">
+                        <option value="bar">Bar</option>
+                        <option value="line">Line</option>
+                        <option value="pie">Pie</option>
+                    </select>
+                </div>
+
+
+                <div id="another-select">
+                    <label for="another-select">Selecteaza altceva:</label>
+                    <select name="another-select" id="another-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

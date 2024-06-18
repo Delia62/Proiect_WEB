@@ -1,5 +1,5 @@
 body {
-    background-image: url('fundal5.jpg');
+    background-image: url('../extras/fundal5.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -15,7 +15,7 @@ body {
     /* Necesar pentru poziționare absolută */
 }
 
-main {
+main { 
     flex: 1;
     display: flex;
     flex-wrap: wrap;
