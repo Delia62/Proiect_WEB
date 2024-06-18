@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Explorer</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" >
+</head>
+
+
+
+<body>
+
+
+    <header>
+        <h1>Șomajul în România</h1>
+        <nav>
+            <ul>
+                <li>
+                <div class="top-buttons">
+                    <a href="login.html" class="button">Login</a>
+                </div>
+                </li>
+                <li>
+                <div>
+                    <input type="checkbox" id="menu-toggle">
+                    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                    <nav id="menu">
+                        
+                        <a href="home.html" class="button">Acasa</a>
+        
+                        <input type="checkbox" id="dropdown-checkbox" >
+                        <label for="dropdown-checkbox" class="dropdown-label">Vizualizare somajul in functie de...</label>
+                                
+                            <a href="somajPeJudete.html" class="button dropdown-element">Șomajul pe județe</a>
+                            <a href="nivelDeEducație.html" class="button dropdown-element">Nivel de educație</a>
+                            <a href="grupeDeVarsta.html" class="button dropdown-element">Grupe de vârstă</a>
+                            <a href="mediu.html" class="button dropdown-element">Mediu</a>
+                            <a href="perioadaDeTimp.html" class="button dropdown-element">Perioadă de timp</a>
+                            <a href="buget.html" class="button dropdown-element">Bugetul</a>
+                            <a href="rataSomajului.html" class="button dropdown-element">Rata șomajului</a>
+                            <a href="protectieSociala.html" class="button dropdown-element">Protecție socială</a>
+                            <a href="munca.html" class="button dropdown-element">Muncă</a>
+                        
+        
+                        
+                        <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
+                        <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
+                        <a href="predictiiRate.html" class="button">Predicții șomaj</a>
+                        <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
+                        <a href="despre.html" class="button">Despre</a>
+                        <a href="ajutor.html" class="button">Ajutor</a>
+                    </nav>
+                </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="search-container">
+            <form id="search-form">
+                <input type="text" id="search-box" placeholder="Search datasets...">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <div id="main-container">
+            <div id="main-content">
+                <h2>Șomajul</h2>
+                <p>Șomajul este o problemă majoră în România, iar datele statistice arată că rata șomajului a crescut în ultimii ani. </p>
+                <p>Numărul total de şomeri la finele lunii martie 2024 a fost de 252.588 de persoane, dintre care 54.864 au fost şomeri indemnizaţi şi 197.724 neindemnizaţi. Numărul şomerilor indemnizaţi a scăzut cu 1.840 de persoane, iar numărul şomerilor neindemnizaţi a crescut cu 7.727 de persoane faţă de luna precedentă.</p>
+                <section>
+                    <h4>Se pot asigura cetăţenii străini în sistemul asigurărilor pentru şomaj?</h4>
+                    <p>Cetăţenii străini sau apatrizi care, pe perioada în care au domiciliul sau reşedinţa în România, sunt încadraţi în muncă sau realizează venituri în condiţiile legii se pot asigura în sistemul asigurărilor pentru şomaj.</p>
+                </section>
+
+                <section>
+                    <h4>Ce condiţii trebuie să îndeplinească cetăţenii străini sau apatrizi pentru a putea beneficia de prestaţii de şomaj?</h4>
+                    <p>Pentru a beneficia de prestaţii de şomaj, cetăţenii străini sau apatrizi care au lucrat în România şi se află în situaţie de şomaj trebuie să îndeplinească cumulativ următoarele condiţii:</p>
+                    <ul>
+                        <li>să aibă un stagiu de cotizare de minimum 12 luni în ultimele 24 de luni care preced data înregistrării cererii pentru acordarea prestaţiei de şomaj;</li>
+                        <li>să nu realizeze venituri sau să realizeze din activităţi autorizate potrivit legii venituri mai mici decât salariul de bază minim brut pe ţară garantat în plată;</li>
+                        <li>să nu îndeplinească condiţiile de pensionare;</li>
+                        <li>să fie înregistraţi la agenţia pentru ocuparea forţei de muncă în a cărei rază teritorială îşi au domiciliul sau reşedinţa.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Ce condiţii trebuie să îndeplineaști pentru a putea beneficia de prestaţii de şomaj?</h4>
+                    <ul>
+                        <li>să aveți domiciliul sau reședința legală în România;</li>
+                        <li>să nu aveți un loc de muncă din motive independente de dumneavoastră;</li>
+                        <li>să nu aveți venituri sau să aveți un venit din activități autorizate conform legii mai mic decât valoarea indicatorului social de referință (ISR);</li>
+                        <li>să fiți apt(ă) de muncă;</li>
+                        <li>să aveți vârsta cuprinsă între 16 ani și vârsta legală pentru pensionare;</li>
+                        <li>să fiți disponibil(ă) pentru recrutare și în căutarea activă a unui loc de muncă;</li>
+                        <li>să vă înregistrați la una dintre agențiile teritoriale de ocupare a forței de muncă în a cărei zonă de activitate aveți domiciliul sau, după caz, reședința, dacă ați avut ultimul loc de muncă sau ați obținut venituri în acea localitate de reședință;</li>
+                        <li>să cereți acordarea indemnizației de șomaj în maximum 12 luni de când v-au încetat raporturile de muncă, de serviciu, de mandat</li>
+                    </ul>
+                </section>
+                <p>De asemenea, șomerii înregistrați la agenția teritorială de ocupare a forței de muncă trebuie să fi contribuit la sistemul de asigurări de șomaj timp de cel puțin 12 luni din cele 24 de luni care preced momentul solicitării indemnizației de șomaj.</p>
+                <p>   Aceasta condiție nu se aplică absolvenților unei instituții de învățământ (sau ai unei școli speciale pentru persoanele cu dizabilități) care sunt în vârstă de cel puțin 16 ani și care nu au reușit să-și găsească un loc de muncă potrivit cu pregătirea profesională timp de 60 zile de la data absolvirii (criteriu temporar valabil doar pentru prima categorie de absolvenți).</p>
+                <section>
+                    <h4>Ce contribuţii de asigurări de şomaj trebuie să plătească asiguraţii?</h4>
+                    <p>Asiguraţii au obligaţia să plătească contribuţiile de asigurări de şomaj, după cum urmează:</p>
+                    <ul>
+                        <li>în calitate de salariat:
+                            <ul>
+                                <li>angajatului i se opreşte 0,5% din salariu de către angajator</li>
+                                <li>angajatorul va plăti o contribuţie de 1% aplicată sumei veniturilor</li>
+                            </ul>
+                        </li>
+                        <li>în calitate de lucrător independent:
+                            <ul>
+                                <li>asigurarea este facultativă</li>
+                                <li>contribuţia la bugetul asigurărilor pentru şomaj reprezintă 1,5% din venitul lunar declarat în contractul de asigurare</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>În ce condiţii se acordă prestaţiile de şomaj?</h4>
+                    <p>Prestaţia de şomaj se acordă şomerilor, pe perioade diferenţiate în funcţie de stagiul de cotizare, după cum urmează:</p>
+                    <ul>
+                        <li>6 luni, pentru persoanele cu un stagiu de cotizare de cel puţin 1 an;</li>
+                        <li>9 luni, pentru persoanele cu un stagiu de cotizare de cel puţin 5 ani;</li>
+                        <li>12 luni, pentru persoanele cu un stagiu de cotizare mai mare de 10 ani.</li>
+                    </ul>
+                </section>
+
+                <h4>Cuantumul prestației de șomaj</h4>
+
+                <table>
+                    <tr>
+                        <th>Stagiul de cotizare</th>
+                        <th>Cuantumul prestației (%)</th>
+                    </tr>
+                    <tr>
+                        <td>Cel puțin 3 ani</td>
+                        <td>3%</td>
+                    </tr>
+                    <tr>
+                        <td>Cel puțin 5 ani</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>Cel puțin 10 ani</td>
+                        <td>7%</td>
+                    </tr>
+                    <tr>
+                        <td>Cel puțin 20 ani</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+
+                <div class="container">
+                <div class="section">
+                    <h4>Legături către statistici oficiale:</h4>
+                    <a href="https://insse.ro/cms/">Site-ul Institutului Național de Statistică (INS)</a>
+                    <a href="https://commission.europa.eu/about-european-commission/departments-and-executive-agencies/eurostat-european-statistics_en">Eurostat</a>
+                </div>
+
+                <div class="section">
+                    <h4>Organizații și instituții:</h4>
+                    <a href="https://www.anofm.ro/">ANOFM</a>
+                    <a href="https://website.anofm.ro/lista-sediilor-ajofm-agentii-locale-puncte-de-lucru-date-de-contact/">AJOFM-uri locale</a>
+                    <a href="https://www.vapro.ro/finantari/resurse-umane-si-social/suport-pentru-someri/">ONG-uri care oferă suport șomerilor</a>
+
+                </div>
+
+                <div class="section">
+                    <h4>Ghiduri și sfaturi:</h4>
+                    <a href="https://cariera.ejobs.ro/model-cv/">Cum să îți pregătești CV-ul</a>
+                    <a href="https://www.hipo.ro/locuri-de-munca/vizualizareArticol/440/Cum-sa-te-pregatesti-pentru-interviul-individual-in-cazul-unui-program-de-trainee%2C-internship-sau-practica%3F">Cum să te pregătești pentru un interviu</a>
+                    <a href="https://www.anofm.ro/index.html?agentie=Bra%C8%99ov&categ=3&subcateg=12&page=0&idpostare=13428">Cerere pentru acordarea indemnizației de șomaj</a>
+                    <a href="http://www.bucuresti.anofm.ro/formulare%202014/Contract%20de%20asigurare%20pentru%20somaj.pdf">Contract de asigurare șomaj</a>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="vertical-menu">
+                <a href="home.html" class="button">Acasa</a>
+
+                
+                <label for="dropdown-checkbox" class="dropdown-label">Vizualizare somajul in functie de...</label>
+                           
+                    <a href="somajPeJudete.html" class="button dropdown-element">Șomajul pe județe</a>
+                    <a href="nivelDeEducație.html" class="button dropdown-element">Nivel de educație</a>
+                    <a href="grupeDeVarsta.html" class="button dropdown-element">Grupe de vârstă</a>
+                    <a href="mediu.html" class="button dropdown-element">Mediu</a>
+                    <a href="perioadaDeTimp.html" class="button dropdown-element">Perioadă de timp</a>
+                    <a href="buget.html" class="button dropdown-element">Bugetul</a>
+                    <a href="rataSomajului.html" class="button dropdown-element">Rata șomajului</a>
+                    <a href="protectieSociala.html" class="button dropdown-element">Protecție socială</a>
+                    <a href="munca.html" class="button dropdown-element">Muncă</a>
+                
+                
+                <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
+                <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
+                <a href="predictiiRate.html" class="button">Predicții șomaj</a>
+                <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
+
+                <a href="despre.html" class="button">Despre</a>
+                <a href="ajutor.html" class="button">Ajutor</a>
+            </div>
+        </div>
+
+        
+
+    </main>
+
+
+</body>
+
+</html>
