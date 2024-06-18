@@ -1,9 +1,6 @@
 body {
-<<<<<<<< HEAD:styles/styles.css
-    background-image: url('../extras/fundal5.jpg');
-========
     background-image:  url('/images/fundal5.jpg');
->>>>>>>> main:UnemploymentExplorer/src/main/resources/css/styles.css
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
