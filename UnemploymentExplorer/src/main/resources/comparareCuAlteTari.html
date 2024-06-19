@@ -7,6 +7,7 @@
     <title>Unemployment Explorer</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" >
     <link rel="stylesheet" type="text/css" href="./css/comparareCuAlteTari.css" >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -19,22 +20,17 @@
         <h1>Șomajul în România</h1>
         <nav>
             <ul>
-                <li>
-                <div class="top-buttons">
-                    <a href="home.html" class="button">Back</a>
-                </div>
+                <li class="top-buttons">
+                    <a href="login.html" class="button">Login</a>
                 </li>
                 <li>
-                <div>
                     <input type="checkbox" id="menu-toggle">
                     <label for="menu-toggle" class="menu-icon">&#9776;</label>
-                    <nav id="menu">
-                        
+                    <div id="menu">
                         <a href="home.html" class="button">Acasa</a>
-        
-                        <input type="checkbox" id="dropdown-checkbox" >
+                        <input type="checkbox" id="dropdown-checkbox">
                         <label for="dropdown-checkbox" class="dropdown-label">Vizualizare somajul in functie de...</label>
-                                
+                        <div id="dropdown-list">
                             <a href="somajPeJudete.html" class="button dropdown-element">Șomajul pe județe</a>
                             <a href="nivelDeEducație.html" class="button dropdown-element">Nivel de educație</a>
                             <a href="grupeDeVarsta.html" class="button dropdown-element">Grupe de vârstă</a>
@@ -44,17 +40,14 @@
                             <a href="rataSomajului.html" class="button dropdown-element">Rata șomajului</a>
                             <a href="protectieSociala.html" class="button dropdown-element">Protecție socială</a>
                             <a href="munca.html" class="button dropdown-element">Muncă</a>
-                        
-        
-                        
+                        </div>
                         <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
                         <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
                         <a href="predictiiRate.html" class="button">Predicții șomaj</a>
                         <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
                         <a href="despre.html" class="button">Despre</a>
                         <a href="ajutor.html" class="button">Ajutor</a>
-                    </nav>
-                </div>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -68,60 +61,99 @@
 
         <div id="country-select-header">
             <div class="label-picker-pair">
-                <p>Tara1</p>
-                <select>
-                    <option value="Romania">Romania</option>
-                    <option value="Germany">Germany</option>
-                    <option value="France">France</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Spain">Spain</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                    <option value="South Korea">South Korea</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="India">India</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Mexico">Mexico</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Iran">Iran</option>
-                    <option value="Iraq">Iraq</option>
+                <p>Județ1</p>
+                <select id="judet1">
+                    <option value="Alba">Alba</option>
+                    <option value="Arad">Arad</option>
+                    <option value="Argeș">Argeș</option>
+                    <option value="Bacău">Bacău</option>
+                    <option value="Bihor">Bihor</option>
+                    <option value="Bistrița-Năsăud">Bistrița-Năsăud</option>
+                    <option value="Botoșani">Botoșani</option>
+                    <option value="Brăila">Brăila</option>
+                    <option value="Brașov">Brașov</option>
+                    <option value="Buzău">Buzău</option>
+                    <option value="Călărași">Călărași</option>
+                    <option value="Caraș-Severin">Caraș-Severin</option>
+                    <option value="Cluj">Cluj</option>
+                    <option value="Constanța">Constanța</option>
+                    <option value="Covasna">Covasna</option>
+                    <option value="Dâmbovița">Dâmbovița</option>
+                    <option value="Dolj">Dolj</option>
+                    <option value="Galați">Galați</option>
+                    <option value="Giurgiu">Giurgiu</option>
+                    <option value="Gorj">Gorj</option>
+                    <option value="Harghita">Harghita</option>
+                    <option value="Hunedoara">Hunedoara</option>
+                    <option value="Ialomița">Ialomița</option>
+                    <option value="Iași">Iași</option>
+                    <option value="Ilfov">Ilfov</option>
+                    <option value="Maramureș">Maramureș</option>
+                    <option value="Mehedinți">Mehedinți</option>
+                    <option value="Mureș">Mureș</option>
+                    <option value="Neamț">Neamț</option>
+                    <option value="Olt">Olt</option>
+                    <option value="Prahova">Prahova</option>
+                    <option value="Sălaj">Sălaj</option>
+                    <option value="Satu-Mare">Satu-Mare</option>
+                    <option value="Sibiu">Sibiu</option>
+                    <option value="Suceava">Suceava</option>
+                    <option value="Teleorman">Teleorman</option>
+                    <option value="Timiș">Timiș</option>
+                    <option value="Tulcea">Tulcea</option>
+                    <option value="Vâlcea">Vâlcea</option>
+                    <option value="Vaslui">Vaslui</option>
+                    <option value="Vrancea">Vrancea</option>
+                    <option value="Bucuresti">Bucuresti</option>
+                
                 </select>
             </div>
 
             <div class="label-picker-pair">
-                <p>Tara2</p>
-                <select>
-                    <option value="Romania">Romania</option>
-                    <option value="Germany">Germany</option>
-                    <option value="France">France</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Spain">Spain</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                    <option value="South Korea">South Korea</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="India">India</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Mexico">Mexico</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Iran">Iran</option>
-                    <option value="Iraq">Iraq</option>
+                <p>Județ2</p>
+                <select id="judet2">
+                    <option value="Alba">Alba</option>
+                    <option value="Arad">Arad</option>
+                    <option value="Argeș">Argeș</option>
+                    <option value="Bacău">Bacău</option>
+                    <option value="Bihor">Bihor</option>
+                    <option value="Bistrița-Năsăud">Bistrița-Năsăud</option>
+                    <option value="Botoșani">Botoșani</option>
+                    <option value="Brăila">Brăila</option>
+                    <option value="Brașov">Brașov</option>
+                    <option value="Buzău">Buzău</option>
+                    <option value="Călărași">Călărași</option>
+                    <option value="Caraș-Severin">Caraș-Severin</option>
+                    <option value="Cluj">Cluj</option>
+                    <option value="Constanța">Constanța</option>
+                    <option value="Covasna">Covasna</option>
+                    <option value="Dâmbovița">Dâmbovița</option>
+                    <option value="Dolj">Dolj</option>
+                    <option value="Galați">Galați</option>
+                    <option value="Giurgiu">Giurgiu</option>
+                    <option value="Gorj">Gorj</option>
+                    <option value="Harghita">Harghita</option>
+                    <option value="Hunedoara">Hunedoara</option>
+                    <option value="Ialomița">Ialomița</option>
+                    <option value="Iași">Iași</option>
+                    <option value="Ilfov">Ilfov</option>
+                    <option value="Maramureș">Maramureș</option>
+                    <option value="Mehedinți">Mehedinți</option>
+                    <option value="Mureș">Mureș</option>
+                    <option value="Neamț">Neamț</option>
+                    <option value="Olt">Olt</option>
+                    <option value="Prahova">Prahova</option>
+                    <option value="Sălaj">Sălaj</option>
+                    <option value="Satu-Mare">Satu-Mare</option>
+                    <option value="Sibiu">Sibiu</option>
+                    <option value="Suceava">Suceava</option>
+                    <option value="Teleorman">Teleorman</option>
+                    <option value="Timiș">Timiș</option>
+                    <option value="Tulcea">Tulcea</option>
+                    <option value="Vâlcea">Vâlcea</option>
+                    <option value="Vaslui">Vaslui</option>
+                    <option value="Vrancea">Vrancea</option>
+                    <option value="Bucuresti">Bucuresti</option>
                 </select>
             </div>
 
@@ -131,7 +163,16 @@
 
         <div id="main-container">
             <div id="main-content">
-                <p>Aici va aparea graficul</p>
+                <div class="chart">
+                    <div class="chart_types">
+                        <button onclick="setChartType('bar')">Bars</button>
+                        <button onclick="setChartType('line')">Line</button>
+                        <button onclick="setChartType('doughnut')">Doughnut</button>
+                        <button onclick="setChartType('polarArea')">PolarArea</button>
+                        <button onclick="setChartType('radar')">Radar</button>
+                    </div>
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
 
@@ -167,6 +208,7 @@
                 <a href="ajutor.html" class="button">Ajutor</a>
             </div>
         </div>
+        <script defer src="././js/comparare.js"></script>
 
     </main>
 

@@ -6,33 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unemployment Explorer</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 
 
 <body>
 
-
     <header>
         <h1>Șomajul în România</h1>
         <nav>
             <ul>
-                <li>
-                <div class="top-buttons">
+                <li class="top-buttons">
                     <a href="login.html" class="button">Login</a>
-                </div>
                 </li>
                 <li>
-                <div>
                     <input type="checkbox" id="menu-toggle">
                     <label for="menu-toggle" class="menu-icon">&#9776;</label>
-                    <nav id="menu">
-                        
+                    <div id="menu">
                         <a href="home.html" class="button">Acasa</a>
-        
-                        <input type="checkbox" id="dropdown-checkbox" >
+                        <input type="checkbox" id="dropdown-checkbox">
                         <label for="dropdown-checkbox" class="dropdown-label">Vizualizare somajul in functie de...</label>
-                                
+                        <div id="dropdown-list">
                             <a href="somajPeJudete.html" class="button dropdown-element">Șomajul pe județe</a>
                             <a href="nivelDeEducație.html" class="button dropdown-element">Nivel de educație</a>
                             <a href="grupeDeVarsta.html" class="button dropdown-element">Grupe de vârstă</a>
@@ -42,21 +37,20 @@
                             <a href="rataSomajului.html" class="button dropdown-element">Rata șomajului</a>
                             <a href="protectieSociala.html" class="button dropdown-element">Protecție socială</a>
                             <a href="munca.html" class="button dropdown-element">Muncă</a>
-                        
-        
-                        
+                        </div>
                         <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
                         <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
                         <a href="predictiiRate.html" class="button">Predicții șomaj</a>
                         <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
                         <a href="despre.html" class="button">Despre</a>
                         <a href="ajutor.html" class="button">Ajutor</a>
-                    </nav>
-                </div>
+                    </div>
                 </li>
             </ul>
         </nav>
     </header>
+    
+    
 
 
     <main>
@@ -70,8 +64,12 @@
         <div id="main-container">
             <div id="main-content">
                 <h2>Șomajul</h2>
+                
                 <p>Șomajul este o problemă majoră în România, iar datele statistice arată că rata șomajului a crescut în ultimii ani. </p>
                 <p>Numărul total de şomeri la finele lunii martie 2024 a fost de 252.588 de persoane, dintre care 54.864 au fost şomeri indemnizaţi şi 197.724 neindemnizaţi. Numărul şomerilor indemnizaţi a scăzut cu 1.840 de persoane, iar numărul şomerilor neindemnizaţi a crescut cu 7.727 de persoane faţă de luna precedentă.</p>
+                <div class="charts">
+                    <canvas id="myChart"></canvas>
+                  </div>
                 <section>
                     <h4>Se pot asigura cetăţenii străini în sistemul asigurărilor pentru şomaj?</h4>
                     <p>Cetăţenii străini sau apatrizi care, pe perioada în care au domiciliul sau reşedinţa în România, sunt încadraţi în muncă sau realizează venituri în condiţiile legii se pot asigura în sistemul asigurărilor pentru şomaj.</p>
@@ -155,7 +153,8 @@
                         <td>10%</td>
                     </tr>
                 </table>
-
+               
+                  
                 <div class="container">
                 <div class="section">
                     <h4>Legături către statistici oficiale:</h4>
@@ -214,6 +213,7 @@
         </div>
 
         
+        <script defer src="././js/grafic.js"></script>
 
     </main>
 
