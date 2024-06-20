@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css" >
     <link rel="stylesheet" type="text/css" href="./css/vizualizare.css" >
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    
 
 </head>
@@ -43,7 +43,7 @@
                             <a href="munca.html" class="button dropdown-element">Muncă</a>
                         </div>
                         <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
-                        <a href="comparareCuAlteTari.html" class="button">Comparație cu alte țări</a>
+                        <a href="comparareCuAlteTari.html" class="button">Comparație între județe</a>
                         <a href="predictiiRate.html" class="button">Predicții șomaj</a>
                         <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
                         <a href="despre.html" class="button">Despre</a>
@@ -67,146 +67,168 @@
                         <button onclick="setChartType('polarArea')">PolarArea</button>
                         <button onclick="setChartType('radar')">Radar</button>
                     </div>
+                    <div class="chart_filters">
+                        <label for="x-axis-select">X-Axis:</label>
+                        <select id="x-axis-select" onchange="updateChart()">
+                            <option value="total">Numărul șomerilor</option>
+                            <option value="rate">Rate</option>
+                            <!-- Adaugă alte opțiuni aici -->
+                        </select>
+
+                        <label for="y-axis-select">Y-Axis:</label>
+                        <select id="y-axis-select" onchange="updateChart()">
+                            <option value="luni">Luni</option>
+                            <option value="ani">Ani</option>
+                            <option value="gen">Gen</option>
+                            <option value="educatie">Educație</option>
+                            <option value="mediu">Mediu</option>
+                            <option value="varsta">Varsta</option>
+                            <!-- Adaugă alte opțiuni aici -->
+                        </select>
+                    </div>
+                    <div class="charts">
                     <canvas id="myChart"></canvas>
+                   </div>
                 </div>
             </div>
+            <div class="vertical-menu">
+                <div class="filter-menu">
+                    <div class="filter-element">
+                        <label for="judet">Județ:</label>
+                        <select name="judet" id="judet">
+                            <option value="0">Toate</option>
+                            <option value="1">Alba</option>
+                            <option value="2">Arad</option>
+                            <option value="3">Argeș</option>
+                            <option value="4">Bacău</option>
+                            <option value="5">Bihor</option>
+                            <option value="6">Bistrița-Năsăud</option>
+                            <option value="7">Botoșani</option>
+                            <option value="8">Brașov</option>
+                            <option value="9">Brăila</option>
+                            <option value="10">Buzău</option>
+                            <option value="11">Caraș-Severin</option>
+                            <option value="12">Călărași</option>
+                            <option value="13">Cluj</option>
+                            <option value="14">Constanța</option>
+                            <option value="15">Covasna</option>
+                            <option value="16">Dâmbovița</option>
+                            <option value="17">Dolj</option>
+                            <option value="18">Galați</option>
+                            <option value="19">Giurgiu</option>
+                            <option value="20">Gorj</option>
+                            <option value="21">Harghita</option>
+                            <option value="22">Hunedoara</option>
+                            <option value="23">Ialomița</option>
+                            <option value="24">Iași</option>
+                            <option value="25">Ilfov</option>
+                            <option value="26">Maramureș</option>
+                            <option value="27">Mehedinți</option>
+                            <option value="28">Mureș</option>
+                            <option value="29">Neamț</option>
+                            <option value="30">Olt</option>
+                            <option value="31">Prahova</option>
+                            <option value="32">Satu Mare</option>
+                            <option value="33">Sălaj</option>
+                            <option value="34">Sibiu</option>
+                            <option value="35">Suceava</option>
+                            <option value="36">Teleorman</option>
+                            <option value="37">Timiș</option>
+                            <option value="38">Tulcea</option>
+                            <option value="39">Vaslui</option>
+                            <option value="40">Vâlcea</option>
+                            <option value="41">Vrancea</option>
+                        </select>
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="educatie">Nivel de educație:</label>
+                        <select name="educatie" id="educatie">
+                            <option value="0">Toate</option>
+                            <option value="1">Fără studii</option>
+                            <option value="2">Primar</option>
+                            <option value="3">Gimnazial</option>
+                            <option value="4">Liceal</option>
+                            <option value="5">Postliceal</option>
+                            <option value="6">Profesional</option>
+                            <option value="7">Superior</option>
+                        </select>
+                </div>
+    
+                <div class="filter-element">
+                    <label for="varsta">Grupă de vârstă:</label>
+                    <select name="varsta" id="varsta">
+                        <option value="0">Toate</option>
+                        <option value="1">sub 18</option>
+                        <option value="2">18-25</option>
+                        <option value="3">26-35</option>
+                        <option value="4">36-45</option>
+                        <option value="5">46-55</option>
+                        <option value="6">peste 55</option>
+                    </select>
+                </div>
+            
+    
+                <div class="filter-element">
+                    <label for="gen">Gen:</label>
+                    <select name="gen" id="gen">
+                        <option value="0">Toate</option>
+                        <option value="1">Feminin</option>
+                        <option value="2">Masculin</option>
+                    </select>
+                </div>
+    
+                    <div class="filter-element">
+                        <label for="mediu">Mediu:</label>
+                        <select name="mediu" id="mediu">
+                            <option value="0">Toate</option>
+                            <option value="1">Urban</option>
+                            <option value="2">Rural</option>
+                        </select>
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="perioadaDeTimpStart">Perioadă de timp:</label>
+                        <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2012">
+                        <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2024">
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="VenitStart">Venit:</label>
+                        <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
+                        <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
+                    </div>
+    
+                    <div class="filter-element" >
+                        <label for="RataSomajStart">Rata Somaj</label>
+                        <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
+                        <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
+                    </div>
+    
+    
+                    <div class="filter-element">
+                        <label for="grafType">Tipul de grafic:</label>
+                        <select name="grafType" id="grafType">
+                            <option value="0">Bară</option>
+                            <option value="1">Linie</option>
+                            <option value="2">Cerc</option>
+                        </select>
+                    </div>
+    
+                    <div class="filter-element button-container">
+                        <button id="filterButton">Filtrează</button>
+                    </div>
+            
+                </div>
+    
+            </div>
+           
         </div>
 
 
 
-        <div class="vertical-menu">
-            <div class="filter-menu">
-                <div class="filter-element">
-                    <label for="judet">Județ:</label>
-                    <select name="judet" id="judet">
-                        <option value="0">Toate</option>
-                        <option value="1">Alba</option>
-                        <option value="2">Arad</option>
-                        <option value="3">Argeș</option>
-                        <option value="4">Bacău</option>
-                        <option value="5">Bihor</option>
-                        <option value="6">Bistrița-Năsăud</option>
-                        <option value="7">Botoșani</option>
-                        <option value="8">Brașov</option>
-                        <option value="9">Brăila</option>
-                        <option value="10">Buzău</option>
-                        <option value="11">Caraș-Severin</option>
-                        <option value="12">Călărași</option>
-                        <option value="13">Cluj</option>
-                        <option value="14">Constanța</option>
-                        <option value="15">Covasna</option>
-                        <option value="16">Dâmbovița</option>
-                        <option value="17">Dolj</option>
-                        <option value="18">Galați</option>
-                        <option value="19">Giurgiu</option>
-                        <option value="20">Gorj</option>
-                        <option value="21">Harghita</option>
-                        <option value="22">Hunedoara</option>
-                        <option value="23">Ialomița</option>
-                        <option value="24">Iași</option>
-                        <option value="25">Ilfov</option>
-                        <option value="26">Maramureș</option>
-                        <option value="27">Mehedinți</option>
-                        <option value="28">Mureș</option>
-                        <option value="29">Neamț</option>
-                        <option value="30">Olt</option>
-                        <option value="31">Prahova</option>
-                        <option value="32">Satu Mare</option>
-                        <option value="33">Sălaj</option>
-                        <option value="34">Sibiu</option>
-                        <option value="35">Suceava</option>
-                        <option value="36">Teleorman</option>
-                        <option value="37">Timiș</option>
-                        <option value="38">Tulcea</option>
-                        <option value="39">Vaslui</option>
-                        <option value="40">Vâlcea</option>
-                        <option value="41">Vrancea</option>
-                    </select>
-                </div>
-
-                <div class="filter-element">
-                    <label for="educatie">Nivel de educație:</label>
-                    <select name="educatie" id="educatie">
-                        <option value="0">Toate</option>
-                        <option value="1">Fără studii</option>
-                        <option value="2">Primar</option>
-                        <option value="3">Gimnazial</option>
-                        <option value="4">Liceal</option>
-                        <option value="5">Postliceal</option>
-                        <option value="6">Profesional</option>
-                        <option value="7">Superior</option>
-                    </select>
-            </div>
-
-            <div class="filter-element">
-                <label for="varsta">Grupă de vârstă:</label>
-                <select name="varsta" id="varsta">
-                    <option value="0">Toate</option>
-                    <option value="1">sub 18</option>
-                    <option value="2">18-25</option>
-                    <option value="3">26-35</option>
-                    <option value="4">36-45</option>
-                    <option value="5">46-55</option>
-                    <option value="6">peste 55</option>
-                </select>
-            </div>
-        
-
-            <div class="filter-element">
-                <label for="gen">Gen:</label>
-                <select name="gen" id="gen">
-                    <option value="0">Toate</option>
-                    <option value="1">Feminin</option>
-                    <option value="2">Masculin</option>
-                </select>
-            </div>
-
-                <div class="filter-element">
-                    <label for="mediu">Mediu:</label>
-                    <select name="mediu" id="mediu">
-                        <option value="0">Toate</option>
-                        <option value="1">Urban</option>
-                        <option value="2">Rural</option>
-                    </select>
-                </div>
-
-                <div class="filter-element">
-                    <label for="perioadaDeTimpStart">Perioadă de timp:</label>
-                    <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2012">
-                    <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2024">
-                </div>
-
-                <div class="filter-element">
-                    <label for="VenitStart">Venit:</label>
-                    <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
-                    <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
-                </div>
-
-                <div class="filter-element" >
-                    <label for="RataSomajStart">Rata Somaj</label>
-                    <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
-                    <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
-                </div>
-
-
-                <div class="filter-element">
-                    <label for="grafType">Tipul de grafic:</label>
-                    <select name="grafType" id="grafType">
-                        <option value="0">Bară</option>
-                        <option value="1">Linie</option>
-                        <option value="2">Cerc</option>
-                    </select>
-                </div>
-
-                <div class="filter-element button-container">
-                    <button id="filterButton">Filtrează</button>
-                </div>
-        
-            </div>
-
-        </div>
-       
-        <script defer src="././js/statisticiVizualizare.js"></script>
+      
+        <script type="module" defer src="././js/statisticiVizualizare.js"></script>
 
     </main>
     </body>
