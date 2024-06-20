@@ -91,86 +91,85 @@
                    </div>
                 </div>
             </div>
+            <div class="vertical-menu">
+                <div class="filter-menu">
+                    <div class="filter-element">
+                        <label for="judet">Județ:</label>
+                        <select name="judet" id="judet">
+                            
+                        </select>
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="educatie">Nivel de educație:</label>
+                        <select name="educatie" id="educatie">
+                            
+                        </select>
+                </div>
+    
+                <div class="filter-element">
+                    <label for="varsta">Grupă de vârstă:</label>
+                    <select name="varsta" id="varsta">
+                       
+                    </select>
+                </div>
             
+    
+                <div class="filter-element">
+                    <label for="gen">Gen:</label>
+                    <select name="gen" id="gen">
+                       
+                    </select>
+                </div>
+    
+                    <div class="filter-element">
+                        <label for="mediu">Mediu:</label>
+                        <select name="mediu" id="mediu">
+                            
+                        </select>
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="perioadaDeTimpStart">Perioadă de timp:</label>
+                        <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2012">
+                        <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2024">
+                    </div>
+    
+                    <div class="filter-element">
+                        <label for="VenitStart">Venit:</label>
+                        <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
+                        <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
+                    </div>
+    
+                    <div class="filter-element" >
+                        <label for="RataSomajStart">Rata Somaj</label>
+                        <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
+                        <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
+                    </div>
+    
+    
+                    <div class="filter-element">
+                        <label for="grafType">Tipul de grafic:</label>
+                        <select name="grafType" id="grafType">
+                            <option value="0">Bară</option>
+                            <option value="1">Linie</option>
+                            <option value="2">Cerc</option>
+                        </select>
+                    </div>
+    
+                    <div class="filter-element button-container">
+                        <button id="filterButton">Filtrează</button>
+                    </div>
+            
+                </div>
+    
+            </div>
            
         </div>
 
 
 
-        <div class="vertical-menu">
-            <div class="filter-menu">
-                <div class="filter-element">
-                    <label for="judet">Județ:</label>
-                    <select name="judet" id="judet">
-                       <!-- js generated -->
-                    </select>
-                </div>
-
-                <div class="filter-element">
-                    <label for="educatie">Nivel de educație:</label>
-                    <select name="educatie" id="educatie">
-                        <!-- js generated -->
-                    </select>
-            </div>
-
-            <div class="filter-element">
-                <label for="varsta">Grupă de vârstă:</label>
-                <select name="varsta" id="varsta">
-                    <!-- js generated -->
-                </select>
-            </div>
-        
-
-            <div class="filter-element">
-                <label for="gen">Gen:</label>
-                <select name="gen" id="gen">
-                    <!-- js generated -->
-                </select>
-            </div>
-
-                <div class="filter-element">
-                    <label for="mediu">Mediu:</label>
-                    <select name="mediu" id="mediu">
-                        <!-- js generated -->
-                    </select>
-                </div>
-
-                <div class="filter-element">
-                    <label for="perioadaDeTimpStart">Perioadă de timp:</label>
-                    <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2024" value="2012">
-                    <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2024" value="2024">
-                </div>
-
-                <div class="filter-element">
-                    <label for="VenitStart">Venit:</label>
-                    <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
-                    <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
-                </div>
-
-                <div class="filter-element" >
-                    <label for="RataSomajStart">Rata Somaj</label>
-                    <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
-                    <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
-                </div>
-
-
-                <!-- <div class="filter-element">
-                    <label for="grafType">Tipul de grafic:</label>
-                    <select name="grafType" id="grafType">
-                        <option value="0">Bară</option>
-                        <option value="1">Linie</option>
-                        <option value="2">Cerc</option>
-                    </select>
-                </div> -->
-
-                <div class="filter-element button-container">
-                    <button id="filterButton" >Filtrează</button>
-                </div>
-        
-            </div>
-
-        </div>
-       
+      
         <script type="module" defer src="././js/statisticiVizualizare.js"></script>
 
     </main>
