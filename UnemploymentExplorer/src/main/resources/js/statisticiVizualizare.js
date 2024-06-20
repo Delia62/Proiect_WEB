@@ -63,7 +63,7 @@ document.getElementById('filterButton').addEventListener('click', postParamCheck
 
 
 export const getPHPConnStatus = async () => {
-    const response = await fetch('./php/testDB.php', {
+    const response = await fetch('./php/repository/connectionFactory.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
