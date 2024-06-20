@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gen.generareGrupariVarsta();
     gen.generareGenuri();
     gen.generareMediu();
-
-
+   
     const ctx = document.getElementById('myChart').getContext('2d');
     let myChart;
 
@@ -27,15 +26,23 @@ document.addEventListener('DOMContentLoaded', function() {
         myChart.destroy();
         createChart(jsonData, chartType);
     }
+    
+    window.updateChart = function() {
+        const xAxis = document.getElementById('x-axis-select').value;
+        const yAxis = document.getElementById('y-axis-select').value;
+        myChart.destroy();
+        createChart(jsonData, myChart.config.type, xAxis, yAxis);
+    }
 
-    function createChart(data, type) {
+ 
+    function createChart(data, type, xAxis = 'month', yAxis = 'income') {
         myChart = new Chart(ctx, {
             type: type,
             data: {
-                labels: data.map(row => row.month),
+                labels: data.map(row => row[xAxis]),
                 datasets: [{
-                    label: 'Income',
-                    data: data.map(row => row.income),
+                    label: yAxis,
+                    data: data.map(row => row[yAxis]),
                     borderWidth: 1
                 }]
             },
@@ -50,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
 
 document.getElementById('filterButton').addEventListener('click', postParamCheck);
 
@@ -69,7 +75,7 @@ export const getPHPConnStatus = async () => {
 
 
 export function postParamCheck() {
-    // Gather data from the form
+    
     var judet = document.getElementById('judet').value;
     var educatie = document.getElementById('educatie').value;
     var varsta = document.getElementById('varsta').value;

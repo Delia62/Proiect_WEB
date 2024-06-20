@@ -23,9 +23,6 @@ body {
 }
 
 main { 
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
     padding: 2rem;
     
     justify-content: space-between;
@@ -35,30 +32,16 @@ main {
     flex: 1;
 }
 header {
+    display: grid;
+    grid-template-columns: 50% 50%;
     background-color: #4CAF50;
     color: white;
     padding: 1rem;
-    display: flex;
     justify-content: space-around;
     width: 100%;
     margin: 0 auto;
 }
 
-.button {
-    display: block;
-    width: 174px;
-    border: none;
-    background-color: white;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 3px 2px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -79,15 +62,40 @@ tr {
     border-bottom: 1px solid #ddd;
 }
 .vertical-menu {
-    width: 200px;
-    background-color: #f0f0f0;
-    position: fixed;
-    right: 30px;    
+    width: 100%;
+    background-color: #f0f0f0;   
     margin-top: 10px;
-    padding: 30px 15px 0 15px;
-
-    height: 100%;
+    padding: 30px 15px;
+    border-radius: 10px;
+    height: auto;
+    contain: paint;
     /* Menținerea înălțimii complete a containerului */
+}
+.dropdown-label {
+    display: block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.button {
+    width: 100%;
+    border: none;
+    background-color: white;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 3px 2px;
+    cursor: pointer;
+    padding: 15px 0px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: left;
 }
 .container-factor {
     max-width: 900px;
@@ -138,16 +146,10 @@ ul {
 ul ul {
     list-style-type: circle;
 }
-.vertical-menu a, #dropdown-div  {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #000;
-
-}
 
 .vertical-menu a:hover, #dropdown-div:hover {
     background-color: #ccc;
+
 }
 
 .top-buttons {
@@ -176,17 +178,9 @@ h1 {
 }
 
 nav {
-    display: flex;
+    float: right;
     align-items: center;
-}
-
-.container {
-     
-    justify-content: space-between;
-    align-items: flex-start;
-    height: auto;
-    position: absolute;
-
+    margin-left: 30%;
 }
 
 nav ul {
@@ -229,19 +223,7 @@ nav a  {
     left: -9999px;
 }
 
-.dropdown-label {
-    display: block;
-    padding: 10px;
-    background-color: #f0f0f0;
-    color: #000;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    text-align: center;
 
-
-}
 
 .dropdown-label:hover {
     background-color: #ccc;
@@ -249,13 +231,14 @@ nav a  {
 
 #dropdown-checkbox:checked ~ #dropdown-list .dropdown-element {
     display: block;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: #ccc;
 }
 
 #dropdown-checkbox:checked ~  #dropdown-list .dropdown-element:hover {
     background-color: #f0f0f0;
+
 }
 
 #dropdown-list .dropdown-element {
@@ -263,13 +246,14 @@ nav a  {
 }
 
 #main-container{
-  
+    display: grid;
+    grid-template-columns: auto 10%;
     
 }
 #main-content{
     margin-top: 5vh;
     margin-bottom: 5vh;
-    width: 80%;
+    width: 90%;
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;

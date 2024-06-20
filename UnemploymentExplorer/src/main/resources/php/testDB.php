@@ -1,5 +1,4 @@
 <?php
-
     function connect(){
         $host = "localhost";
         $port = "5432";
