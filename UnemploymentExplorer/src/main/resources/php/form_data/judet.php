@@ -1,7 +1,7 @@
 <?php
 
     const judet = [
-        "Toate" => "Toate",
+        "total" => "Toate",
         "Alba" => "Alba",
         "Arad" => "Arad",
         "Arges" => "Arges",
