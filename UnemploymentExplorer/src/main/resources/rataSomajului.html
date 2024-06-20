@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unemployment Explorer</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" >
+    <link rel="stylesheet" type="text/css" href="./css/rata.css" >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 
@@ -53,7 +56,7 @@
 
         <div id="main-container">
             <div id="main-content">
-                <h2>Rata șomajului din România</h2>
+                <h2  style="text-align: center;">Rata șomajului din România</h2>
                 <p align="left">Rata şomajului în luna ianuarie 2024 a fost, în formă ajustată sezonier, de 5,7%, în creștere cu 0,1 puncte procentuale față de cea înregistrată în luna decembrie 2023.</p>
            <h3>În luna aprilie 2024, rata şomajului în formă ajustată sezonier a fost de 5,3% </h3>
                 <ul>
@@ -70,6 +73,18 @@
                     </ul>
 
                 </section>
+                <div class="chart">
+                    <div class="chart_types">
+                        
+                        <button onclick="loadChartData('ianuarie')">Ianuarie</button>
+                        <button onclick="loadChartData('februarie')">Februarie</button>
+                        <button onclick="loadChartData('martie')">Martie</button>
+                        <button onclick="loadChartData('aprilie')">Aprilie</button>
+                    </div>
+                    
+                    <canvas id="myChart"></canvas>
+                </div>
+                <br>
                 <div class="section">
                     <p>Mai multe informații despre rata:</p>
                     <p> <a href="https://insse.ro/cms/sites/default/files/com_presa/com_pdf/somaj_bim_aprilie24r.pdf">Comunicat de presă</a></p>
@@ -108,6 +123,7 @@
         <div class="container">
             
         </div>
+        <script type="module" defer src="././js/rata.js"></script>
     </main>
 
 
