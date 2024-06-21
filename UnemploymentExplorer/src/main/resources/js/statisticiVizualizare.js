@@ -91,20 +91,17 @@ export function postParamCheck() {
 
     // Send data to seePOSTvals.php for debugging
     $.ajax({
-        url: './php/seePOSTvals.php',
+        url: '../php/repository/testService.php',
         type: 'POST',
         data: {
             judet: judet,
             educatie: educatie,
-            varsta: varsta,
-            sex: sex,
             mediu: mediu,
+            sex: sex,
+            varsta: varsta,
             perioadaDeTimpStart: perioadaDeTimpStart,
             perioadaDeTimpEnd: perioadaDeTimpEnd,
-            VenitStart: VenitStart,
-            VenitEnd: VenitEnd,
-            rataStart: rataStart,
-            rataEnd: rataEnd,
+            rata: "total"
             // grafType: grafType
         },
         success: function(response) {
@@ -115,3 +112,4 @@ export function postParamCheck() {
         }
     });
 }
+
