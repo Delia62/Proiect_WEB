@@ -31,6 +31,7 @@
                     default:
                         break;
                 }
+                break;
             case "somerimediurural":
                 switch($filtering["sex"])
                 {
@@ -45,6 +46,7 @@
                     default:
                         break;
                 }
+                break;
             case "total":
                 switch($filtering["sex"]) 
                 {
@@ -59,6 +61,7 @@
                     default:
                         break;
                 }
+                break;
         }
     }
 
@@ -87,6 +90,11 @@
     }
  
 
+
+
+
+
+
     function getOverallValuesByYearsAndMonths($startYear, $endYear, &$filtering){
         $conn = connect();
         // setMediu($filtering);
@@ -95,7 +103,7 @@
         // echo "<br>";
         // echo "<br>";
 
-        $oneJudet = $filtering["judet"] == "total" ? false : true;
+        // $oneJudet = $filtering["judet"] == "total" ? false : true;
         $filtering["judet"] = strtoupper($filtering["judet"]);
 
         // Sanitize the input
@@ -105,12 +113,13 @@
         $varsta = pg_escape_string($filtering["varsta"]);
 
  
-        if(! $oneJudet )
-            $query = "SELECT e.total, e.$educatie as educatie, m.$mediu as mediu, r.$rata as rata, v.$varsta as varsta, e.luna, e.an 
-            FROM educatie e JOIN mediu m ON e.judet = m.judet AND e.luna = m.luna AND e.an = m.an
-            JOIN rata r ON e.judet = r.judet AND e.luna = r.luna AND e.an = r.an
-            JOIN varsta v ON e.judet = v.judet AND e.luna = v.luna AND e.an = v.an
-            WHERE e.an BETWEEN $1 AND $2";
+        if( $filtering["judet"] == "TOTAL" )
+            $query = "SELECT SUM(e.total) as total, SUM(e.$educatie) as educatie, SUM(m.$mediu) as mediu, SUM(r.$rata) as rata, SUM(v.$varsta) as varsta, e.luna, e.an 
+                            FROM educatie e JOIN mediu m ON e.judet = m.judet AND e.luna = m.luna AND e.an = m.an
+                            JOIN rata r ON e.judet = r.judet AND e.luna = r.luna AND e.an = r.an
+                            JOIN varsta v ON e.judet = v.judet AND e.luna = v.luna AND e.an = v.an
+                            WHERE e.an BETWEEN $1 AND $2
+                            GROUP BY e.luna, e.an";
 
         else $query = "SELECT e.total, e.$educatie as educatie, m.$mediu as mediu, r.$rata as rata, v.$varsta as varsta, e.luna, e.an
             FROM educatie e JOIN mediu m ON e.judet = m.judet AND e.luna = m.luna AND e.an = m.an
@@ -122,8 +131,8 @@
 
 
         $result = pg_prepare($conn, "my_query", $query);
-        if( $oneJudet )  $data = pg_execute($conn, "my_query", array('%'.$filtering["judet"].'%', $startYear, $endYear));
-        else $data = pg_execute($conn, "my_query", array($startYear, $endYear));
+        if( $filtering["judet"] == "TOTAL" ) $data = pg_execute($conn, "my_query", array($startYear, $endYear));
+        else  $data = pg_execute($conn, "my_query", array('%'.$filtering["judet"].'%', $startYear, $endYear));
 
 
         $data = pg_fetch_all($data);
@@ -157,7 +166,7 @@
         return $result;
     }
 
-    function formatToJson($data, $filtering){
+    function formatToGraphInput($data, $filtering){
         setMediu($filtering);
 
         echo "percentege data gotten:";
@@ -215,33 +224,21 @@
     function getFilteringResult($startYear, $endYear, $filtering){
         $result = null;
         setMediu($filtering);
-        
 
+
+
+
+
+        //if oy axis is nr of someri and oy axis is months
         if(countFilters($filtering) == 0 || countFilters($filtering) == 1)
-            $result = getOverallValuesByYearsAndMonths($startYear, $endYear, $filtering);
+            $result = getOverallValuesByYearsAndMonths($startYear, $endYear, $filtering);//theres no need to turn to percentages if theres only one or no filter; get the basic values already provided
         else $result = getOverallPrecentagesByYearsAndMonths($startYear, $endYear, $filtering);
 
 
-        return json_encode(formatToJson($result, $filtering));
+        return json_encode(formatToGraphInput($result, $filtering));
     }
 
     
-    // print_r(getOverallValuesByYearsAndMonths(2022, 2023, $filtering));
-    // echo "<br>";
-    // // echo "<br>";
-    // // echo "<br>";
-    // // echo "<br>";
-    // print_r(getOverallPrecentagesByYearsAndMonths(2022, 2023, $filtering));
-    // echo "<br>";
-    // echo "<br>";
-    // echo "<br>";
-    // echo "<br>";
-    // $result = getOverallPrecentagesByYearsAndMonths(2022, 2023, $filtering);
-    // print_r(formatToJson($result, $filtering)); 
-
-
-
     
-    // print_r(getFilteringResult(2022, 2023, $filtering));
 
 ?>

@@ -68,15 +68,16 @@
                         <button onclick="setChartType('radar')">Radar</button>
                     </div>
                     <div class="chart_filters">
-                        <label for="x-axis-select">X-Axis:</label>
-                        <select id="x-axis-select" onchange="updateChart()">
+                        <label for="y-axis-select">Y-Axis:</label>
+                        <select id="y-axis-select" onchange="updateChart()">
                             <option value="total">Numărul șomerilor</option>
                             <option value="rate">Rate</option>
                             <!-- Adaugă alte opțiuni aici -->
                         </select>
 
-                        <label for="y-axis-select">Y-Axis:</label>
-                        <select id="y-axis-select" onchange="updateChart()">
+
+                        <label for="x-axis-select">X-Axis:</label>
+                        <select id="x-axis-select" onchange="updateChart()">
                             <option value="luni">Luni</option>
                             <option value="ani">Ani</option>
                             <option value="gen">Gen</option>
@@ -85,6 +86,7 @@
                             <option value="varsta">Varsta</option>
                             <!-- Adaugă alte opțiuni aici -->
                         </select>
+
                     </div>
                     <div class="charts">
                     <canvas id="myChart"></canvas>
