@@ -1,3 +1,6 @@
+html{
+    width: 100%;
+}
 body {
     background-image:  url('../images/fundal5.jpg');
 
@@ -36,12 +39,13 @@ header {
     grid-template-columns: 50% 50%;
     background-color: #4CAF50;
     color: white;
-    padding: 1rem;
+    padding: 1rem 0rem;
     justify-content: space-around;
     width: 100%;
-    margin: 0 auto;
 }
-
+header h1{
+    text-align: center;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -67,21 +71,32 @@ tr {
     margin-top: 10px;
     padding: 30px 15px;
     border-radius: 10px;
-    height: auto;
+    height: 860px;
     contain: paint;
-    /* Menținerea înălțimii complete a containerului */
 }
 .dropdown-label {
-    display: block;
-    padding: 10px;
-    background-color: #f0f0f0;
+    display: flex;
+    width: 100%;
+    background-color: white;
     color: #000;
     cursor: pointer;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 5px;
     text-align: center;
+    padding: 15px 0px;
 }
+.dropdown-label2 {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px 0px;
+}
+
 .button {
     width: 100%;
     border: none;
@@ -96,6 +111,9 @@ tr {
     border: 1px solid #ddd;
     border-radius: 5px;
     float: left;
+}
+.button:active{
+    background-color:#0b0a0a;
 }
 .container-factor {
     max-width: 900px;
@@ -151,16 +169,18 @@ ul ul {
     background-color: #ccc;
 
 }
+.vertical-menu a.button:hover {
+    background-color: #ddd;
+}
 
 .top-buttons {
     margin-right: 100px;
     width: 150px;
     top: 20px;
     right: 20px;
-    display: flex;
     flex-direction: row;
     z-index: 999;
-    /* Asigură poziționarea deasupra conținutului */
+   
 }
 
 .top-button {
@@ -178,10 +198,14 @@ h1 {
 }
 
 nav {
-    float: right;
+    
     align-items: center;
-    margin-left: 30%;
+    contain: size;
+    z-index: 1;
+    overflow: unset;
 }
+
+
 
 nav ul {
     list-style-type: none;
@@ -191,15 +215,38 @@ nav ul {
     align-items: center;
 }
 
+.vertical-menu nav {
+
+    align-items: center;
+}
+
+.vertical-menu nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    align-items: center;
+}
+
+
+.vertical-menu #dropdown-list2 a {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0px;
+    align-items: center;
+}
 nav li {
     margin-bottom: 0;
     margin-right: 1rem;
 }
 
+
+
 nav a  {
     color: white;
     text-decoration: none;
 }
+
 
 #search-container {
     flex: 1 1 60%;
@@ -229,6 +276,18 @@ nav a  {
     background-color: #ccc;
 }
 
+
+ #dropdown-checkbox2[type="checkbox"]{
+    position: absolute;
+    left: -9999px;
+}
+
+
+
+.dropdown-label2:hover {
+    background-color: #ccc;
+}
+
 #dropdown-checkbox:checked ~ #dropdown-list .dropdown-element {
     display: block;
     width: 100%;
@@ -236,18 +295,46 @@ nav a  {
     background-color: #ccc;
 }
 
+
 #dropdown-checkbox:checked ~  #dropdown-list .dropdown-element:hover {
     background-color: #f0f0f0;
 
 }
 
+
+#dropdown-checkbox2:checked ~ #dropdown-list2 .dropdown-element2 {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ccc;
+}
+
+
+#dropdown-checkbox2:checked ~  #dropdown-list2 .dropdown-element2:hover {
+    background-color: #f0f0f0;
+
+}
+
+
 #dropdown-list .dropdown-element {
+    display: none;
+}
+
+#dropdown-list2 .dropdown-element2 {
+    display: none;
+}
+
+#dropdown-checkbox2 {
+    display: none;
+}
+
+#dropdown-checkbox {
     display: none;
 }
 
 #main-container{
     display: grid;
-    grid-template-columns: auto 10%;
+    grid-template-columns: auto 15%;
     
 }
 #main-content{
@@ -270,6 +357,14 @@ nav a  {
     display: block;
 }
 
+#dropdown-list2 {
+    text-align: center;
+}
+
+#dropdown-checkbox2:checked ~ #dropdown-list2 {
+    display: block;
+}
+
 .menu-icon {
     font-size: 30px;
     cursor: pointer;
@@ -278,8 +373,25 @@ nav a  {
 
 #menu {
     display: none;
+    
 }
 
+ .dropdown-element {
+    display: none;
+    background-color: #f9f9f9;
+    padding-left: 10px; 
+}
+
+.dropdown-element a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+ .dropdown-element a:hover {
+    background-color: #ddd;
+}
 
 @media screen and (max-width: 900px) {
     .menu-icon {
