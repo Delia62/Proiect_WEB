@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         switch (xAxis) {
             case 'luni':
+                console.log("Luni");
+                console.log(data);
+                console.log(data.map(row => row.luna));
                 labels = [...new Set(data.map(row => row.luna))];
                 datasets = Object.keys(data.reduce((acc, row) => {
                     if (!acc[row.an]) acc[row.an] = [];

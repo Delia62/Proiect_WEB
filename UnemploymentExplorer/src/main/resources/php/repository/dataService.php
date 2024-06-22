@@ -240,7 +240,7 @@
         
 
 
-        if( $yAxis == "total")
+        if( $yAxis == "nr_someri")
         {   
             if( $xAxis == "luni"){
                 return json_encode(getValues($startYear, $endYear, $filtering));
