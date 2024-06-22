@@ -1,0 +1,281 @@
+import * as gen from './statisticiGenerare.js';
+
+document.addEventListener('DOMContentLoaded', function() {
+    gen.generareSelectJudet();
+    gen.generareNivelEducatie();
+    gen.generareGrupariVarsta();
+    gen.generareGenuri();
+    gen.generareMediu();
+
+    let myChart;
+
+  
+
+    const jsonDataAni = [
+        {"nr_someri":47,"an":2022},
+        {"nr_someri":38,"an":2023},
+        {"nr_someri":5,"an":2024}
+    ];
+    const jsonDataLuni = [
+        {"nr_someri":2,"luna":"ianuarie","an":2022},
+        {"nr_someri":3,"luna":"februarie","an":2022},
+        {"nr_someri":3,"luna":"martie","an":2022},
+        {"nr_someri":3,"luna":"aprilie","an":2022},
+        {"nr_someri":3,"luna":"mai","an":2022},
+        {"nr_someri":3,"luna":"iunie","an":2022},
+        {"nr_someri":4,"luna":"iulie","an":2022},
+        {"nr_someri":4,"luna":"august","an":2022},
+        {"nr_someri":5,"luna":"septembrie","an":2022},
+        {"nr_someri":6,"luna":"octombrie","an":2022},
+        {"nr_someri":5,"luna":"noiembrie","an":2022},
+        {"nr_someri":6,"luna":"decembrie","an":2022}
+    ];
+    const jsonDataSex = [
+        {"feminin":18971,"masculin":24144,"an":2022},
+        {"feminin":20626,"masculin":25311,"an":2023}
+    ];
+
+    const jsonDataEducatie = [
+        {"fara":839,"primar":1939,"gimnazial":3700,"liceal":2516,"postliceal":120,"profesional":1473,"universitar":503,"an":2022},
+        {"fara":755,"primar":1902,"gimnazial":3921,"liceal":2716,"postliceal":105,"profesional":1711,"universitar":490,"an":2023}
+    ];
+
+    const jsonDataMediu = [
+        {"urban":770,"rural":1745,"an":2022},
+        {"urban":856,"rural":1882,"an":2023}
+    ];
+
+    const jsonDataVarsta = [
+        {"sub25":450,"intre25si29":228,"intre30si39":416,"intre40si49":557,"intre50si55":420,"peste55":425,"an":2022},
+        {"sub25":538,"intre25si29":287,"intre30si39":506,"intre40si49":674,"intre50si55":546,"peste55":534,"an":2023}
+    ];
+
+    const colors = {
+        2022: 'rgba(75, 192, 192, 0.2)',
+        2023: 'rgba(54, 162, 235, 0.2)',
+        2024: 'rgba(255, 206, 86, 0.2)'
+    };
+
+    const borderColors = {
+        2022: 'rgba(75, 192, 192, 1)',
+        2023: 'rgba(54, 162, 235, 1)',
+        2024: 'rgba(255, 206, 86, 1)'
+    };
+
+    function getSelectedData(xAxis) {
+        switch(xAxis) {
+            case 'luni':
+                return jsonDataLuni;
+            case 'ani':
+                return jsonDataAni;
+            case 'sex':
+                return jsonDataSex;
+            case 'educatie':
+                return jsonDataEducatie;
+            case 'mediu':
+                return jsonDataMediu;
+            case 'varsta':
+                return jsonDataVarsta;
+            default:
+                return [];
+        }
+    }
+function createChart(data, type, xAxis = 'luni', yAxis = 'nr_someri') {
+    let labels, datasets;
+
+    switch (xAxis) {
+        case 'luni':
+            labels = [...new Set(data.map(row => row.luna))];
+            datasets = Object.keys(data.reduce((acc, row) => {
+                if (!acc[row.an]) acc[row.an] = [];
+                acc[row.an].push(row);
+                return acc;
+            }, {})).map(year => {
+                const dataForYear = data.filter(item => item.an === parseInt(year)); // asigurÄƒ-te cÄƒ year este tratat ca numÄƒr Ã®ntreg
+                return {
+                    label: `Anul ${year}`,
+                    data: labels.map(luna => {
+                        const dataForLuna = dataForYear.find(item => item.luna === luna);
+                        return dataForLuna ? dataForLuna[yAxis] : 0; // returneazÄƒ valoarea doritÄƒ sau 0 dacÄƒ nu existÄƒ
+                    }),
+                    backgroundColor: colors[year],
+                    borderColor: borderColors[year],
+                    borderWidth: 1,
+                    group: year // seteazÄƒ grupul pentru a grupa barele pe aceeaÈ™i categorie de axÄƒ X
+                };
+            });
+            
+            break;
+
+        case 'ani':
+            labels = data.map(row => row.an);
+            datasets = [{
+                label: 'NumÄƒrul È™omerilor',
+                data: data.map(row => row.nr_someri),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }];
+            break;
+
+        case 'sex':
+            labels = ['Feminin', 'Masculin'];
+            datasets = data.map(row => ({
+                label: `Anul ${row.an}`,
+                data: [row.feminin, row.masculin],
+                backgroundColor: colors[row.an],
+                borderColor: borderColors[row.an],
+                borderWidth: 1
+            }));
+            break;
+
+        case 'educatie':
+            labels = ['FÄƒrÄƒ', 'Primar', 'Gimnazial', 'Liceal', 'Postliceal', 'Profesional', 'Universitar'];
+            datasets = data.map(row => ({
+                label: `Anul ${row.an}`,
+                data: [row.fara, row.primar, row.gimnazial, row.liceal, row.postliceal, row.profesional, row.universitar],
+                backgroundColor: colors[row.an],
+                borderColor: borderColors[row.an],
+                borderWidth: 1
+            }));
+            break;
+
+        case 'mediu':
+            labels = ['Urban', 'Rural'];
+            datasets = data.map(row => ({
+                label: `Anul ${row.an}`,
+                data: [row.urban, row.rural],
+                backgroundColor: colors[row.an],
+                borderColor: borderColors[row.an],
+                borderWidth: 1
+            }));
+            break;
+
+        case 'varsta':
+            labels = ['sub25', 'intre25si29', 'intre30si39', 'intre40si49', 'intre50si55', 'peste55'];
+            datasets = data.map(row => ({
+                label: `Anul ${row.an}`,
+                data: [row.sub25, row.intre25si29, row.intre30si39, row.intre40si49, row.intre50si55, row.peste55],
+                backgroundColor: colors[row.an],
+                borderColor: borderColors[row.an],
+                borderWidth: 1
+            }));
+            break;
+
+        default:
+            labels = [];
+            datasets = [];
+            break;
+    }
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(ctx, {
+        type: type,
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            scales: {
+                x: {
+                   
+                },
+                y: {
+                    beginAtZero: true
+                }
+            },
+            maintainAspectRatio: false
+        }
+    });
+}
+
+    window.updateChart = function() {
+        console.log("updateChart called");
+        const xAxis = document.getElementById('x-axis-select').value;
+        const yAxis = document.getElementById('y-axis-select').value;
+        console.log("xAxis:", xAxis);
+        console.log("yAxis:", yAxis);
+        const selectedData = getSelectedData(xAxis);
+        createChart(selectedData, 'bar', xAxis, yAxis);
+    };
+
+    // Initial chart
+    window.onload = function() {
+        console.log("Window onload called");
+        updateChart();
+    };
+
+    window.setChartType = function(type) {
+        console.log("setChartType called");
+        console.log("Type:", type);
+        const xAxis = document.getElementById('x-axis-select').value;
+        const yAxis = document.getElementById('y-axis-select').value;
+        console.log("xAxis:", xAxis);
+        console.log("yAxis:", yAxis);
+        const selectedData = getSelectedData(xAxis);
+        createChart(selectedData, type, xAxis, yAxis);
+    };
+
+    // Switch pentru a selecta tipul de grafic
+    const switchChartType = document.getElementById('chart-type-switch');
+    switchChartType.addEventListener('change', function() {
+        const type = switchChartType.checked ? 'line' : 'bar'; // line pentru linie, bar pentru barÄƒ
+        setChartType(type);
+    });
+
+    document.getElementById('filterButton').addEventListener('click', postParamCheck);
+
+    async function getPHPConnStatus() {
+        const response = await fetch('./php/repository/connectionFactory.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+        const data = await response.text();
+        console.log(data);
+    }
+
+    function postParamCheck() {
+        const judet = document.getElementById('judet').value;
+        const educatie = document.getElementById('educatie').value;
+        const varsta = document.getElementById('varsta').value;
+        const sex = document.getElementById('gen').value;
+        const mediu = document.getElementById('mediu').value;
+        const perioadaDeTimpStart = document.getElementById('perioadaDeTimpStart').value;
+        const perioadaDeTimpEnd = document.getElementById('perioadaDeTimpEnd').value;
+        const VenitStart = document.getElementById('VenitStart').value;
+        const VenitEnd = document.getElementById('VenitEnd').value;
+        const rataStart = document.getElementById('RataSomajStart').value;
+        const rataEnd = document.getElementById('RataSomajEnd').value;
+
+        $.ajax({
+            url: './php/seePOSTvals.php',
+            type: 'POST',
+            data: {
+                judet: judet,
+                educatie: educatie,
+                varsta: varsta,
+                sex: sex,
+                mediu: mediu,
+                perioadaDeTimpStart: perioadaDeTimpStart,
+                perioadaDeTimpEnd: perioadaDeTimpEnd,
+                VenitStart: VenitStart,
+                VenitEnd: VenitEnd,
+                rataStart: rataStart,
+                rataEnd: rataEnd
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            }
+        });
+    }
+});

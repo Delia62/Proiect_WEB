@@ -1,96 +1,145 @@
 import * as gen from './statisticiGenerare.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    gen.generareSelectJudet();
-    gen.generareNivelEducatie();
-    gen.generareGrupariVarsta();
-    gen.generareGenuri();
-    gen.generareMediu();
+    Promise.all([
+        gen.generareSelectJudet(),
+        gen.generareNivelEducatie(),
+        gen.generareGrupariVarsta(),
+        gen.generareGenuri(),
+        gen.generareMediu()
+    ]).then(() => {
+        console.log("All promises resolved");
 
-    const ctx = document.getElementById('myChart').getContext('2d');
+        
+        // Initial chart
+        console.log("Window onload called");
+        updateChart();
+
+
+    }).catch((error) => {
+        console.error(error);
+    });
+
     let myChart;
 
-    const jsonData = [
-        {"nr_someri": 198, "luna": "ianuarie", "an": 2022},
-        {"nr_someri": 193, "luna": "februarie", "an": 2022},
-        {"nr_someri": 193, "luna": "martie", "an": 2022},
-        {"nr_someri": 180, "luna": "aprilie", "an": 2022},
-        {"nr_someri": 180, "luna": "mai", "an": 2022},
-        {"nr_someri": 184, "luna": "iunie", "an": 2022},
-        {"nr_someri": 166, "luna": "iulie", "an": 2022},
-        {"nr_someri": 177, "luna": "august", "an": 2022},
-        {"nr_someri": 184, "luna": "septembrie", "an": 2022},
-        {"nr_someri": 189, "luna": "octombrie", "an": 2022},
-        {"nr_someri": 191, "luna": "noiembrie", "an": 2022},
-        {"nr_someri": 190, "luna": "decembrie", "an": 2022},
-        {"nr_someri": 219, "luna": "ianuarie", "an": 2023},
-        {"nr_someri": 188, "luna": "februarie", "an": 2023},
-        {"nr_someri": 190, "luna": "martie", "an": 2023},
-        {"nr_someri": 177, "luna": "aprilie", "an": 2023},
-        {"nr_someri": 164, "luna": "mai", "an": 2023},
-        {"nr_someri": 161, "luna": "iunie", "an": 2023},
-        {"nr_someri": 158, "luna": "iulie", "an": 2023},
-        {"nr_someri": 163, "luna": "august", "an": 2023},
-        {"nr_someri": 162, "luna": "septembrie", "an": 2023},
-        {"nr_someri": 176, "luna": "octombrie", "an": 2023},
-        {"nr_someri": 185, "luna": "noiembrie", "an": 2023},
-        {"nr_someri": 177, "luna": "decembrie", "an": 2023}
-    ];
+    const colors = {
+        2022: 'rgba(75, 192, 192, 0.2)',
+        2023: 'rgba(54, 162, 235, 0.2)',
+        2024: 'rgba(255, 206, 86, 0.2)'
+    };
 
-    createChart(jsonData, 'bar');
+    const borderColors = {
+        2022: 'rgba(75, 192, 192, 1)',
+        2023: 'rgba(54, 162, 235, 1)',
+        2024: 'rgba(255, 206, 86, 1)'
+    };
 
-    window.setChartType = function(chartType) {
+
+    function createChart(data, type, xAxis = 'luni', yAxis = 'nr_someri') {
+        let labels, datasets;
+
+        switch (xAxis) {
+            case 'luni':
+                labels = [...new Set(data.map(row => row.luna))];
+                datasets = Object.keys(data.reduce((acc, row) => {
+                    if (!acc[row.an]) acc[row.an] = [];
+                    acc[row.an].push(row);
+                    return acc;
+                }, {})).map(year => {
+                    const dataForYear = data.filter(item => item.an === parseInt(year)); // asigură-te că year este tratat ca număr întreg
+                    return {
+                        label: `Anul ${year}`,
+                        data: labels.map(luna => {
+                            const dataForLuna = dataForYear.find(item => item.luna === luna);
+                            return dataForLuna ? dataForLuna[yAxis] : 0; // returnează valoarea dorită sau 0 dacă nu există
+                        }),
+                        backgroundColor: colors[year],
+                        borderColor: borderColors[year],
+                        borderWidth: 1,
+                        group: year // setează grupul pentru a grupa barele pe aceeași categorie de axă X
+                    };
+                });
+                
+                break;
+
+            case 'ani':
+                labels = data.map(row => row.an);
+                datasets = [{
+                    label: 'Numărul șomerilor',
+                    data: data.map(row => row.nr_someri),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }];
+                break;
+
+            case 'sex':
+                labels = ['Feminin', 'Masculin'];
+                datasets = data.map(row => ({
+                    label: `Anul ${row.an}`,
+                    data: [row.feminin, row.masculin],
+                    backgroundColor: colors[row.an],
+                    borderColor: borderColors[row.an],
+                    borderWidth: 1
+                }));
+                break;
+
+            case 'educatie':
+                labels = ['Fără', 'Primar', 'Gimnazial', 'Liceal', 'Postliceal', 'Profesional', 'Universitar'];
+                datasets = data.map(row => ({
+                    label: `Anul ${row.an}`,
+                    data: [row.fara, row.primar, row.gimnazial, row.liceal, row.postliceal, row.profesional, row.universitar],
+                    backgroundColor: colors[row.an],
+                    borderColor: borderColors[row.an],
+                    borderWidth: 1
+                }));
+                break;
+
+            case 'mediu':
+                labels = ['Urban', 'Rural'];
+                datasets = data.map(row => ({
+                    label: `Anul ${row.an}`,
+                    data: [row.urban, row.rural],
+                    backgroundColor: colors[row.an],
+                    borderColor: borderColors[row.an],
+                    borderWidth: 1
+                }));
+                break;
+
+            case 'varsta':
+                labels = ['sub25', 'intre25si29', 'intre30si39', 'intre40si49', 'intre50si55', 'peste55'];
+                datasets = data.map(row => ({
+                    label: `Anul ${row.an}`,
+                    data: [row.sub25, row.intre25si29, row.intre30si39, row.intre40si49, row.intre50si55, row.peste55],
+                    backgroundColor: colors[row.an],
+                    borderColor: borderColors[row.an],
+                    borderWidth: 1
+                }));
+                break;
+
+            default:
+                labels = [];
+                datasets = [];
+                break;
+        }
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+
         if (myChart) {
             myChart.destroy();
         }
-        createChart(jsonData, chartType);
-    }
-
-    window.updateChart = function() {
-        const xAxis = document.getElementById('x-axis-select').value;
-        const yAxis = document.getElementById('y-axis-select').value;
-        if (myChart) {
-            myChart.destroy();
-        }
-        createChart(jsonData, myChart.config.type, xAxis, yAxis);
-    }
-
-    function createChart(data, type, xAxis = 'luna', yAxis = 'nr_someri') {
-        const groupedData = data.reduce((acc, row) => {
-            const year = row.an;
-            if (!acc[year]) acc[year] = [];
-            acc[year].push(row);
-            return acc;
-        }, {});
-
-        const colors = {
-            2022: 'rgba(75, 192, 192, 0.2)',
-            2023: 'rgba(153, 102, 255, 0.2)',
-            // Adaugă mai multe culori pentru anii următori, dacă este necesar
-        };
-
-        const borderColors = {
-            2022: 'rgba(75, 192, 192, 1)',
-            2023: 'rgba(153, 102, 255, 1)',
-            // Adaugă mai multe culori pentru anii următori, dacă este necesar
-        };
-
-        const datasets = Object.keys(groupedData).map(year => ({
-            label: `Anul ${year}`,
-            data: groupedData[year].map(row => row[yAxis]),
-            backgroundColor: colors[year],
-            borderColor: borderColors[year],
-            borderWidth: 1
-        }));
 
         myChart = new Chart(ctx, {
             type: type,
             data: {
-                labels: [...new Set(data.map(row => row[xAxis]))],
+                labels: labels,
                 datasets: datasets
             },
             options: {
                 scales: {
+                    x: {
+                    
+                    },
                     y: {
                         beginAtZero: true
                     }
@@ -99,58 +148,89 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    window.updateChart = function() {
+        console.log("updateChart called");
+        const xAxis = document.getElementById('x-axis-select').value;
+        const yAxis = document.getElementById('y-axis-select').value;
+        console.log("xAxis:", xAxis);
+        console.log("yAxis:", yAxis);
+        postParamCheck().then(selectedData => {
+            console.log("Selected data:", selectedData);
+            createChart(selectedData, 'bar', xAxis, yAxis);
+        });
+    };
+    
+    window.setChartType = function(type) {
+        console.log("setChartType called");
+        console.log("Type:", type);
+        const xAxis = document.getElementById('x-axis-select').value;
+        const yAxis = document.getElementById('y-axis-select').value;
+        console.log("xAxis:", xAxis);
+        console.log("yAxis:", yAxis);
+        postParamCheck().then(selectedData => {
+            createChart(selectedData, type, xAxis, yAxis);
+        });
+    };
+
+        
+
+    
 });
+
+
+
+
 
 document.getElementById('filterButton').addEventListener('click', postParamCheck);
 
-export const getPHPConnStatus = async () => {
-    const response = await fetch('./php/repository/connectionFactory.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    });
-    const data = await response.text();
-    console.log(data);
-}
+    async function getPHPConnStatus() {
+        const response = await fetch('./php/repository/connectionFactory.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+        const data = await response.text();
+        console.log(data);
+    }
 
-export function postParamCheck() {
-    const judet = document.getElementById('judet').value;
-    const educatie = document.getElementById('educatie').value;
-    const varsta = document.getElementById('varsta').value;
-    const sex = document.getElementById('gen').value;
-    const mediu = document.getElementById('mediu').value;
-    const perioadaDeTimpStart = document.getElementById('perioadaDeTimpStart').value;
-    const perioadaDeTimpEnd = document.getElementById('perioadaDeTimpEnd').value;
-    // const VenitStart = document.getElementById('VenitStart').value;
-    // const VenitEnd = document.getElementById('VenitEnd').value;
-    // const rataStart = document.getElementById('RataSomajStart').value;
-    // const rataEnd = document.getElementById('RataSomajEnd').value;
-    const xAxis = document.getElementById('x-axis-select').value;
-    const yAxis = document.getElementById('y-axis-select').value;
-
-    // Send data to seePOSTvals.php for debugging
-    $.ajax({
-        url: '../php/repository/testService.php',
-        type: 'POST',
-        data: {
-            judet: judet,
-            educatie: educatie,
-            mediu: mediu,
-            sex: sex,
-            varsta: varsta,
-            perioadaDeTimpStart: perioadaDeTimpStart,
-            perioadaDeTimpEnd: perioadaDeTimpEnd,
-            rata: "total",
-            xAxis: xAxis,
-            yAxis: yAxis,
-        },
-        success: function(response) {
+    function performAjaxCall() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: '../php/repository/testService.php',
+                type: 'POST',
+                data: {
+                    judet: document.getElementById('judet').value, // Assuming these values are defined similarly
+                    educatie: document.getElementById('educatie').value,
+                    mediu: document.getElementById('mediu').value,
+                    sex: document.getElementById('gen').value,
+                    varsta: document.getElementById('varsta').value,
+                    perioadaDeTimpStart: document.getElementById('perioadaDeTimpStart').value,
+                    perioadaDeTimpEnd: document.getElementById('perioadaDeTimpEnd').value,
+                    rata: "total",
+                    xAxis: document.getElementById('x-axis-select').value,
+                    yAxis: document.getElementById('y-axis-select').value,
+                },
+                success: function(response) {
+                    console.log(response);
+                    resolve(response); // Resolve the promise with the response
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr);
+                    reject(xhr); // Reject the promise
+                }
+            });
+        });
+    }
+    
+    // Step 2: Use async/await to wait for the AJAX call to complete
+    async function postParamCheck() {
+        try {
+            const response = await performAjaxCall(); // Wait for the AJAX call to complete
             console.log(response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error(textStatus, errorThrown);
+            return JSON.parse(response);
+        } catch (error) {
+            console.error("AJAX call failed: ", error);
         }
-    });
-}
-
+    }

@@ -150,11 +150,11 @@
 
     function getOverallPrecentagesByYearsAndMonths($startYear, $endYear, $filtering){
         $result = getOverallValuesByYearsAndMonths($startYear, $endYear, $filtering);
-        echo "basic values gotten:";
-        print_r($result);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+        // echo "basic values gotten:";
+        // print_r($result);
+        // echo "<br>";
+        // echo "<br>";
+        // echo "<br>";
 
         foreach($result as $key => $value){
             $total = $value["total"];
@@ -171,11 +171,11 @@
     function formatToGraphInput($data, $filtering){
         setMediu($filtering);
 
-        echo "percentege data gotten:";
-        print_r($data);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+        // echo "percentege data gotten:";
+        // print_r($data);
+        // echo "<br>";
+        // echo "<br>";
+        // echo "<br>";
 
 
 
@@ -379,7 +379,9 @@
                 return json_encode($finalResult);
 
             }
+            else return -1;
         }
+
     }
 
     function getValues($startYear, $endYear, $filtering){
@@ -510,4 +512,8 @@
         }
         return $finalResult;
     }
+
+
+
+    
 ?>
