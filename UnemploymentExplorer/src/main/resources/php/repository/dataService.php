@@ -221,24 +221,159 @@
 
   
 
-    function getFilteringResult($startYear, $endYear, $filtering){
+    function getFilteringResult($startYear, $endYear, $filtering, $xAxis, $yAxis){
         $result = null;
+        if(array_key_exists($xAxis, $filtering))
+            $filtering[$xAxis] = "total"; 
         setMediu($filtering);
 
 
 
 
 
-        //if oy axis is nr of someri and oy axis is months
+         
         if(countFilters($filtering) == 0 || countFilters($filtering) == 1)
-            $result = getOverallValuesByYearsAndMonths($startYear, $endYear, $filtering);//theres no need to turn to percentages if theres only one or no filter; get the basic values already provided
+        $result = getOverallValuesByYearsAndMonths($startYear, $endYear, $filtering);//theres no need to turn to percentages if theres only one or no filter; get the basic values already provided
         else $result = getOverallPrecentagesByYearsAndMonths($startYear, $endYear, $filtering);
+        
+        $result = formatToGraphInput($result, $filtering);
 
 
-        return json_encode(formatToGraphInput($result, $filtering));
+        if( $yAxis == "total")
+        {   
+            if( $xAxis == "luni")
+                return json_encode($result);
+            else if( $xAxis == "ani"){
+                return json_encode(sumByYears($result, $startYear, $endYear));
+            }
+            else if( $xAxis == "sex" ){
+                return json_encode(getNumbersBySex(sumByYears($result, $startYear, $endYear), $filtering, $startYear, $endYear));
+            }
+            else if( $xAxis == "educatie" ){
+                return json_encode(getNumbersByEducation(sumByYears($result, $startYear, $endYear), $filtering, $startYear, $endYear));
+            }
+        }
     }
 
-    
+
+
+    function sumByYears($data, $startYear, $endYear){
+        $finalCalculation = [];
+        for($year = $startYear; $year <= $endYear; $year++)
+            $finalCalculation[$year] = 0;
+
+        foreach($data as $key => $value){
+            $finalCalculation[$value["an"]] += $value["nr_someri"];
+        }
+
+        $finalFormat = [];
+        foreach($finalCalculation as $key => $value){
+            $temp = [];
+            $temp["nr_someri"] = $value;
+            $temp["an"] = $key;
+            array_push($finalFormat, $temp);
+        }
+
+        return $finalFormat;
+    }
+
+
+
+
+
+
+
+
+    function getNumbersBySex($data, $filtering, $startYear, $endYear){
+        //
+        
+        $mediu = $filtering["mediu"];
+        $filtering["sex"] = "feminin";
+        setMediu($filtering);
+        $mediuFeminin = $filtering["mediu"];
+        $filtering["sex"] = "masculin";
+        setMediu($filtering);
+        $mediuMasculin = $filtering["mediu"];
+
+
+        $conn = connect();
+        $mediu = pg_escape_string($mediu);
+        $mediuFeminin = pg_escape_string($mediuFeminin);
+        $mediuMasculin = pg_escape_string($mediuMasculin);
+
+        $query = "SELECT SUM(m.$mediu) as mediu, SUM(m.$mediuFeminin) as feminin, SUM(m.$mediuMasculin) as masculin, m.an 
+                    FROM mediu m WHERE m.an BETWEEN $1 AND $2 GROUP BY m.an";
+        $result = pg_prepare($conn, "my_query", $query);
+        $result = pg_execute($conn, "my_query", array($startYear, $endYear));
+        $result = pg_fetch_all($result);
+
+        pg_close($conn);
+
+
+        $finalResult = [];
+        foreach($data as $key => $value){
+            $temp = [];
+            
+            $mediu = array_filter($result, function($var) use ($value){
+                return $var["an"] == $value["an"];
+            })[0]["mediu"];
+            $mediuFeminin = array_filter($result, function($var) use ($value){
+                return $var["an"] == $value["an"];
+            })[0]["feminin"];
+            $mediuFeminin = round((floatval($mediuFeminin) / floatval($mediu)), 3, PHP_ROUND_HALF_UP);
+            
+
+
+
+            $temp["feminin"] = round($value["nr_someri"] * $mediuFeminin, 0, PHP_ROUND_HALF_UP);
+            $temp["masculin"] = $value["nr_someri"] - $temp["feminin"];
+            $temp["an"] = $value["an"];
+            array_push($finalResult, $temp);
+        }
+        return $finalResult;
+
+    }
     
 
+    function getNumbersByEducation($data, $filtering, $startYear, $endYear){
+        // $educatie = $filtering["educatie"];
+        $conn = connect();
+
+        $query = "SELECT SUM(e.total) as total, SUM(e.fara) as fara, SUM(e.primar) as primar, SUM(e.gimnazial) as gimnazial, SUM(e.liceal) as liceal, SUM(e.postliceal) as postliceal, SUM(e.profesional) as profesional, SUM(e.universitar) as universitar, e.an 
+                    FROM educatie e WHERE e.an BETWEEN $1 AND $2 GROUP BY e.an";
+
+        $result = pg_prepare($conn, "my_query", $query);
+        $result = pg_execute($conn, "my_query", array($startYear, $endYear));
+        $result = pg_fetch_all($result);
+
+        pg_close($conn);
+
+        $finalResult = [];
+        foreach($data as $key => $value){
+            $temp = [];
+            
+            $educatie = array_filter($result, function($var) use ($value){
+                return $var["an"] == $value["an"];
+            })[0];
+            $total = $educatie["total"];
+            $fara = round((floatval($educatie["fara"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $primar = round((floatval($educatie["primar"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $gimnazial = round((floatval($educatie["gimnazial"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $liceal = round((floatval($educatie["liceal"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $postliceal = round((floatval($educatie["postliceal"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $profesional = round((floatval($educatie["profesional"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+            $universitar = round((floatval($educatie["universitar"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
+
+            $temp["fara"] = round($value["nr_someri"] * $fara, 0, PHP_ROUND_HALF_UP);
+            $temp["primar"] = round($value["nr_someri"] * $primar, 0, PHP_ROUND_HALF_UP);
+            $temp["gimnazial"] = round($value["nr_someri"] * $gimnazial, 0, PHP_ROUND_HALF_UP);
+            $temp["liceal"] = round($value["nr_someri"] * $liceal, 0, PHP_ROUND_HALF_UP);
+            $temp["postliceal"] = round($value["nr_someri"] * $postliceal, 0, PHP_ROUND_HALF_UP);
+            $temp["profesional"] = round($value["nr_someri"] * $profesional, 0, PHP_ROUND_HALF_UP);
+            $temp["universitar"] = round($value["nr_someri"] * $universitar, 0, PHP_ROUND_HALF_UP);
+            $temp["an"] = $value["an"];
+            array_push($finalResult, $temp);
+        }
+        return $finalResult;
+    }
 ?>

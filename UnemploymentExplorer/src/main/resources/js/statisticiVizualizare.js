@@ -122,10 +122,12 @@ export function postParamCheck() {
     const mediu = document.getElementById('mediu').value;
     const perioadaDeTimpStart = document.getElementById('perioadaDeTimpStart').value;
     const perioadaDeTimpEnd = document.getElementById('perioadaDeTimpEnd').value;
-    const VenitStart = document.getElementById('VenitStart').value;
-    const VenitEnd = document.getElementById('VenitEnd').value;
-    const rataStart = document.getElementById('RataSomajStart').value;
-    const rataEnd = document.getElementById('RataSomajEnd').value;
+    // const VenitStart = document.getElementById('VenitStart').value;
+    // const VenitEnd = document.getElementById('VenitEnd').value;
+    // const rataStart = document.getElementById('RataSomajStart').value;
+    // const rataEnd = document.getElementById('RataSomajEnd').value;
+    const xAxis = document.getElementById('x-axis-select').value;
+    const yAxis = document.getElementById('y-axis-select').value;
 
     // Send data to seePOSTvals.php for debugging
     $.ajax({
@@ -139,8 +141,9 @@ export function postParamCheck() {
             varsta: varsta,
             perioadaDeTimpStart: perioadaDeTimpStart,
             perioadaDeTimpEnd: perioadaDeTimpEnd,
-            rata: "total"
-            // grafType: grafType
+            rata: "total",
+            xAxis: xAxis,
+            yAxis: yAxis,
         },
         success: function(response) {
             console.log(response);
