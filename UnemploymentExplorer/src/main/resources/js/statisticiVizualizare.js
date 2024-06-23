@@ -40,10 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         switch (xAxis) {
             case 'luni':
+                const monthOrder = ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'];
+
+
+
                 console.log("Luni");
                 console.log(data);
                 console.log(data.map(row => row.luna));
                 labels = [...new Set(data.map(row => row.luna))];
+                labels.sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+
+
+
                 datasets = Object.keys(data.reduce((acc, row) => {
                     if (!acc[row.an]) acc[row.an] = [];
                     acc[row.an].push(row);

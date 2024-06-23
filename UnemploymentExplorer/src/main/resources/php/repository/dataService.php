@@ -129,8 +129,6 @@
             JOIN varsta v ON e.judet = v.judet AND e.luna = v.luna AND e.an = v.an
             WHERE UPPER(e.judet) LIKE $1 AND e.an BETWEEN $2 AND $3";
 
-        // echo $query;
-
 
         $result = pg_prepare($conn, "my_query", $query);
         if( $filtering["judet"] == "TOTAL" ) $data = pg_execute($conn, "my_query", array($startYear, $endYear));
