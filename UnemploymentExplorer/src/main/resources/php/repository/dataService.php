@@ -257,14 +257,33 @@
                 $resultMasculin = sumByYears(getValues($startYear, $endYear, $filtering), $startYear, $endYear);
 
 
+                // echo "feminin";
+                // print_r($resultFeminin);
+                // echo "<br>";
+                // echo "<br>";
+                // echo "<br>";
+                // echo "masculin";
+                // print_r($resultMasculin);
+                // echo "<br>";
+                // echo "<br>";
+                // echo "<br>";
+
                 $finalResult = [];
-                foreach($resultFeminin as $key => $value){
-                    $temp = [];
-                    $temp["feminin"] = $value["nr_someri"];
-                    $temp["masculin"] = array_filter($resultMasculin, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["an"] = $value["an"];
+                foreach ($resultFeminin as $femininEntry) {
+                    $temp = [
+                        "feminin" => $femininEntry["nr_someri"],
+                        "masculin" => null, // Default value
+                        "an" => $femininEntry["an"]
+                    ];
+                
+                    // Search for a matching year in masculinArray
+                    foreach ($resultMasculin as $masculinEntry) {
+                        if ($masculinEntry["an"] === $femininEntry["an"]) {
+                            $temp["masculin"] = $masculinEntry["nr_someri"];
+                            break; // Stop searching once a match is found
+                        }
+                    }
+                
                     array_push($finalResult, $temp);
                 }
 
