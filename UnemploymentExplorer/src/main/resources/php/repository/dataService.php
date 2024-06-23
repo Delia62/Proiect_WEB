@@ -309,25 +309,62 @@
                 foreach($resultFara as $key => $value){
                     $temp = [];
                     $temp["fara"] = $value["nr_someri"];
-                    $temp["primar"] = array_filter($resultPrimar, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["gimnazial"] = array_filter($resultGimnazial, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["liceal"] = array_filter($resultLiceal, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["postliceal"] = array_filter($resultPostliceal, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["profesional"] = array_filter($resultProfesional, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["universitar"] = array_filter($resultUniversitar, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
                     $temp["an"] = $value["an"];
+                
+                    // Primar
+                    $temp["primar"] = null;
+                    foreach($resultPrimar as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["primar"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
+                    // Gimnazial
+                    $temp["gimnazial"] = null;
+                    foreach($resultGimnazial as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["gimnazial"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
+                    // Liceal
+                    $temp["liceal"] = null;
+                    foreach($resultLiceal as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["liceal"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
+                    // Postliceal
+                    $temp["postliceal"] = null;
+                    foreach($resultPostliceal as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["postliceal"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
+                    // Profesional
+                    $temp["profesional"] = null;
+                    foreach($resultProfesional as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["profesional"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
+                    // Universitar
+                    $temp["universitar"] = null;
+                    foreach($resultUniversitar as $item){
+                        if($item["an"] == $value["an"]){
+                            $temp["universitar"] = $item["nr_someri"];
+                            break;
+                        }
+                    }
+                
                     array_push($finalResult, $temp);
                 }
 
@@ -347,10 +384,14 @@
                     foreach($resultUrban as $key => $value){
                         $temp = [];
                         $temp["urban"] = $value["nr_someri"];
-                        $temp["rural"] = array_filter($resultRural, function($var) use ($value){
-                            return $var["an"] == $value["an"];
-                        })[0]["nr_someri"];
                         $temp["an"] = $value["an"];
+
+                        foreach($resultRural as $key2 => $value2){
+                            if($value2["an"] == $value["an"]){
+                                $temp["rural"] = $value2["nr_someri"];
+                                break;
+                            }
+                        }
                         array_push($finalResult, $temp);
                     }
 
@@ -374,22 +415,44 @@
                 foreach($resultSub25 as $key => $value){
                     $temp = [];
                     $temp["sub25"] = $value["nr_someri"];
-                    $temp["intre25si29"] = array_filter($resultIntre25si29, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["intre30si39"] = array_filter($resultIntre30si39, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["intre40si49"] = array_filter($resultIntre40si49, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["intre50si55"] = array_filter($resultIntre50si55, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
-                    $temp["peste55"] = array_filter($resultPeste55, function($var) use ($value){
-                        return $var["an"] == $value["an"];
-                    })[0]["nr_someri"];
                     $temp["an"] = $value["an"];
+
+                    foreach($resultIntre25si29 as $key2 => $value2){
+                        if($value2["an"] == $value["an"]){
+                            $temp["intre25si29"] = $value2["nr_someri"];
+                            break;
+                        }
+                    }
+
+                    foreach($resultIntre30si39 as $key2 => $value2){
+                        if($value2["an"] == $value["an"]){
+                            $temp["intre30si39"] = $value2["nr_someri"];
+                            break;
+                        }
+                    }
+
+                    foreach($resultIntre40si49 as $key2 => $value2){
+                        if($value2["an"] == $value["an"]){
+                            $temp["intre40si49"] = $value2["nr_someri"];
+                            break;
+                        }
+                    }
+
+                    foreach($resultIntre50si55 as $key2 => $value2){
+                        if($value2["an"] == $value["an"]){
+                            $temp["intre50si55"] = $value2["nr_someri"];
+                            break;
+                        }
+                    }
+
+                    foreach($resultPeste55 as $key2 => $value2){
+                        if($value2["an"] == $value["an"]){
+                            $temp["peste55"] = $value2["nr_someri"];
+                            break;
+                        }
+                    }
+
+
                     array_push($finalResult, $temp);
                 }
 
@@ -432,103 +495,6 @@
 
 
 
-
-
-
-
-
-    function getNumbersBySex($data, $filtering, $startYear, $endYear){
-        //
-        
-        $mediu = $filtering["mediu"];
-        $filtering["sex"] = "feminin";
-        setMediu($filtering);
-        $mediuFeminin = $filtering["mediu"];
-        $filtering["sex"] = "masculin";
-        setMediu($filtering);
-        $mediuMasculin = $filtering["mediu"];
-
-
-        $conn = connect();
-        $mediu = pg_escape_string($mediu);
-        $mediuFeminin = pg_escape_string($mediuFeminin);
-        $mediuMasculin = pg_escape_string($mediuMasculin);
-
-        $query = "SELECT SUM(m.$mediu) as mediu, SUM(m.$mediuFeminin) as feminin, SUM(m.$mediuMasculin) as masculin, m.an 
-                    FROM mediu m WHERE m.an BETWEEN $1 AND $2 GROUP BY m.an";
-        $result = pg_prepare($conn, "my_query", $query);
-        $result = pg_execute($conn, "my_query", array($startYear, $endYear));
-        $result = pg_fetch_all($result);
-
-        pg_close($conn);
-
-
-        $finalResult = [];
-        foreach($data as $key => $value){
-            $temp = [];
-            
-            $mediu = array_filter($result, function($var) use ($value){
-                return $var["an"] == $value["an"];
-            })[0]["mediu"];
-            $mediuFeminin = array_filter($result, function($var) use ($value){
-                return $var["an"] == $value["an"];
-            })[0]["feminin"];
-            $mediuFeminin = round((floatval($mediuFeminin) / floatval($mediu)), 3, PHP_ROUND_HALF_UP);
-            
-
-
-
-            $temp["feminin"] = round($value["nr_someri"] * $mediuFeminin, 0, PHP_ROUND_HALF_UP);
-            $temp["masculin"] = $value["nr_someri"] - $temp["feminin"];
-            $temp["an"] = $value["an"];
-            array_push($finalResult, $temp);
-        }
-        return $finalResult;
-
-    }
-    
-
-    function getNumbersByEducation($data, $filtering, $startYear, $endYear){
-        // $educatie = $filtering["educatie"];
-        $conn = connect();
-
-        $query = "SELECT SUM(e.total) as total, SUM(e.fara) as fara, SUM(e.primar) as primar, SUM(e.gimnazial) as gimnazial, SUM(e.liceal) as liceal, SUM(e.postliceal) as postliceal, SUM(e.profesional) as profesional, SUM(e.universitar) as universitar, e.an 
-                    FROM educatie e WHERE e.an BETWEEN $1 AND $2 GROUP BY e.an";
-
-        $result = pg_prepare($conn, "my_query", $query);
-        $result = pg_execute($conn, "my_query", array($startYear, $endYear));
-        $result = pg_fetch_all($result);
-
-        pg_close($conn);
-
-        $finalResult = [];
-        foreach($data as $key => $value){
-            $temp = [];
-            
-            $educatie = array_filter($result, function($var) use ($value){
-                return $var["an"] == $value["an"];
-            })[0];
-            $total = $educatie["total"];
-            $fara = round((floatval($educatie["fara"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $primar = round((floatval($educatie["primar"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $gimnazial = round((floatval($educatie["gimnazial"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $liceal = round((floatval($educatie["liceal"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $postliceal = round((floatval($educatie["postliceal"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $profesional = round((floatval($educatie["profesional"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-            $universitar = round((floatval($educatie["universitar"]) / floatval($total)), 3, PHP_ROUND_HALF_UP);
-
-            $temp["fara"] = round($value["nr_someri"] * $fara, 0, PHP_ROUND_HALF_UP);
-            $temp["primar"] = round($value["nr_someri"] * $primar, 0, PHP_ROUND_HALF_UP);
-            $temp["gimnazial"] = round($value["nr_someri"] * $gimnazial, 0, PHP_ROUND_HALF_UP);
-            $temp["liceal"] = round($value["nr_someri"] * $liceal, 0, PHP_ROUND_HALF_UP);
-            $temp["postliceal"] = round($value["nr_someri"] * $postliceal, 0, PHP_ROUND_HALF_UP);
-            $temp["profesional"] = round($value["nr_someri"] * $profesional, 0, PHP_ROUND_HALF_UP);
-            $temp["universitar"] = round($value["nr_someri"] * $universitar, 0, PHP_ROUND_HALF_UP);
-            $temp["an"] = $value["an"];
-            array_push($finalResult, $temp);
-        }
-        return $finalResult;
-    }
 
 
 
