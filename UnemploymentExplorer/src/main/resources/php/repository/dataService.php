@@ -234,17 +234,15 @@
 
 
 
-         
         
 
 
-        if( $yAxis == "nr_someri")
-        {   
+        
             if( $xAxis == "luni"){
-                return json_encode(getValues($startYear, $endYear, $filtering));
+                $result = getValues($startYear, $endYear, $filtering);
             }
             else if( $xAxis == "ani"){
-                return json_encode(sumByYears(getValues($startYear, $endYear, $filtering), $startYear, $endYear));
+                $result = sumByYears(getValues($startYear, $endYear, $filtering), $startYear, $endYear);
             }
             else if( $xAxis == "sex" ){
                 $filtering["mediu"] = $mediuSelectat;
@@ -287,7 +285,7 @@
                     array_push($finalResult, $temp);
                 }
 
-                return json_encode($finalResult);
+                $result = $finalResult;
             }
             else if( $xAxis == "educatie" ){
                 $filtering["educatie"] = "fara";
@@ -368,7 +366,7 @@
                     array_push($finalResult, $temp);
                 }
 
-                return json_encode($finalResult);
+                $result = $finalResult;
             }
             else if( $xAxis == "mediu" ){
                     $filtering["mediu"] = "somerimediuurban";
@@ -395,7 +393,7 @@
                         array_push($finalResult, $temp);
                     }
 
-                    return json_encode($finalResult);
+                    $result = $finalResult;
             }
             else if( $xAxis == "varsta" ){
                 $filtering["varsta"] = "sub25";
@@ -456,10 +454,168 @@
                     array_push($finalResult, $temp);
                 }
 
-                return json_encode($finalResult);
+                $result = $finalResult;
 
             }
+            else $result = -1;
+     
+            
+
+
+
+
+
+
+        if($yAxis == "nr_someri") return json_encode($result);
+        else if($yAxis == "rate"){
+            if($result == -1 || count($result) == 0) return -1;
+            
+            if($xAxis == "luni"){
+                $allYears = [];
+                foreach($result as $key => $value){
+                    if(!in_array($value["an"], $allYears)) array_push($allYears, $value["an"]);
+                }
+
+                $totalPerYear = [];
+                foreach($allYears as $year){
+                    $totalPerYear[$year] = ["nr_someri" => 0, "an" => $year];
+                }
+
+                foreach($result as $key => $value){
+                    $totalPerYear[$value["an"]]["nr_someri"] += $value["nr_someri"];
+                }
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["nr_someri"] = round((intval($value["nr_someri"]) * 100 / $totalPerYear[$value["an"]]["nr_someri"]), 2);
+                    $temp["luna"] = $value["luna"];
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                // echo "start result:";
+                // echo json_encode($result);
+                // echo "final result:";
+                // echo json_encode($finalResult);
+                return json_encode($finalResult);
+            }
+            else if($xAxis == "ani"){
+                $total = 0;
+                foreach($result as $key => $value){
+                    $total += $value["nr_someri"];
+                }
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["nr_someri"] = round((intval($value["nr_someri"]) * 100 / $total), 2);
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                return json_encode($finalResult);
+            }
+            else if($xAxis == "sex"){
+                $totalPerYear = [];
+
+                foreach($result as $key => $value){
+                    if(!array_key_exists($value["an"], $totalPerYear)){
+                        $totalPerYear[$value["an"]] = 0;
+                    }
+
+                    $totalPerYear[$value["an"]] += $value["feminin"] + $value["masculin"];
+                }
+
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["feminin"] = round(($value["feminin"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["masculin"] = round(($value["masculin"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                return json_encode($finalResult);
+            }
+            else if($xAxis == "educatie"){
+                $totalPerYear = [];
+
+                foreach($result as $key => $value){
+                    if(!array_key_exists($value["an"], $totalPerYear)){
+                        $totalPerYear[$value["an"]] = 0;
+                    }
+
+                    $totalPerYear[$value["an"]] += $value["fara"] + $value["primar"] + $value["gimnazial"] + $value["liceal"] + $value["postliceal"] + $value["profesional"] + $value["universitar"];
+                }
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["fara"] = round(($value["fara"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["primar"] = round(($value["primar"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["gimnazial"] = round(($value["gimnazial"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["liceal"] = round(($value["liceal"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["postliceal"] = round(($value["postliceal"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["profesional"] = round(($value["profesional"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["universitar"] = round(($value["universitar"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                return json_encode($finalResult);
+            }
+            else if($xAxis == "mediu"){
+                $totalPerYear = [];
+
+                foreach($result as $key => $value){
+                    if(!array_key_exists($value["an"], $totalPerYear)){
+                        $totalPerYear[$value["an"]] = 0;
+                    }
+
+                    $totalPerYear[$value["an"]] += $value["urban"] + $value["rural"];
+                }
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["urban"] = round(($value["urban"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["rural"] = round(($value["rural"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                return json_encode($finalResult);
+            }
+            else if($xAxis == "varsta"){
+                $totalPerYear = [];
+
+                foreach($result as $key => $value){
+                    if(!array_key_exists($value["an"], $totalPerYear)){
+                        $totalPerYear[$value["an"]] = 0;
+                    }
+
+                    $totalPerYear[$value["an"]] += $value["sub25"] + $value["intre25si29"] + $value["intre30si39"] + $value["intre40si49"] + $value["intre50si55"] + $value["peste55"];
+                }
+
+                $finalResult = [];
+                foreach($result as $key => $value){
+                    $temp = [];
+                    $temp["sub25"] = round(($value["sub25"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["intre25si29"] = round(($value["intre25si29"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["intre30si39"] = round(($value["intre30si39"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["intre40si49"] = round(($value["intre40si49"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["intre50si55"] = round(($value["intre50si55"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["peste55"] = round(($value["peste55"] * 100 / $totalPerYear[$value["an"]]), 2);
+                    $temp["an"] = $value["an"];
+                    array_push($finalResult, $temp);
+                }
+
+                return json_encode($finalResult);
+            }
             else return -1;
+            
         }
 
     }

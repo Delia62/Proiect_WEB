@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         label: `Anul ${year}`,
                         data: labels.map(luna => {
                             const dataForLuna = dataForYear.find(item => item.luna === luna);
-                            return dataForLuna ? dataForLuna[yAxis] : 0; // returnează valoarea dorită sau 0 dacă nu există
+                            return dataForLuna["nr_someri"]; // returnează valoarea dorită sau 0 dacă nu există
                         }),
                         backgroundColor: colors[year],
                         borderColor: borderColors[year],
