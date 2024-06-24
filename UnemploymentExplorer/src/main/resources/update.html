@@ -7,7 +7,7 @@
     <title>Unemployment Explorer</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" >
     <link rel="stylesheet" type="text/css" href="./css/update_styles.css" >
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 
@@ -47,8 +47,36 @@
             <div class="main-content">
                 <form >
                     <label for="file">Selecteaza fisierul:</label><br>
-                    <input type="file" id="file" name="file"><br><br>
-                    <input type="submit" value="Upload" name="submit">
+                    <select name="upload-an" id="upload-an" >
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                    <select name="upload-luna" id="upload-luna" >
+                        <option value="ianuarie">ianuarie</option>
+                        <option value="februarie">februarie</option>
+                        <option value="martie">martie</option>
+                        <option value="aprilie">aprilie</option>
+                        <option value="mai">mai</option>
+                        <option value="iunie">iunie</option>
+                        <option value="iulie">iulie</option>
+                        <option value="august">august</option>
+                        <option value="septembrie">septembrie</option>
+                        <option value="octombrie">octombrie</option>
+                        <option value="noiembrie">noiembrie</option>
+                        <option value="decembrie">decembrie</option>
+                    </select>
+                    <select name="upload-tip" id="upload-tip">
+                        <option value="educatie">educatie</option>
+                        <option value="mediu">mediu</option>
+                        <option value="varsta">varsta</option>
+                        <option value="rata">rate</option>
+                    </select>
+                    <input type="file" id="upload-file" name="file" accept=".csv" ><br><br>
+                    
                 </form>
             </div>
         </div>
@@ -58,22 +86,41 @@
             <div class="main-content">
                 <form>
                 <h1>Download files from the database</h1>
-                <select name="file">
-                    <option value="unemployment">Unemployment</option>
-                    <option value="population">Population</option>
-                    <option value="gdp">GDP</option>
-                    <option value="education">Education</option>
-                    <option value="health">Health</option>
+                <div id="download-set">
+                <select name="download-an" id="download-an" >
+                    <!-- js gen -->
                 </select>
-                <input type="submit" value="Download" name="submit">
+                <select name="download-luna" id="download-luna">
+                    <!-- js generated -->
+                </select>
+                <select name="download-tip" id="download-tip">
+                    <!-- js generated -->
+                </select>
+                </div>
+                <br>
+
+                <label for="file">Selecteaza modalitatea de exportare:</label><br>
+                <div>
+                    <input type="radio" id="csv" name="file" value="csv">
+                    <label for="csv">CSV</label><br>
+                    <input type="radio" id="json" name="file" value="json">
+                    <label for="json">JSON</label><br>
+                    <input type="radio" id="xml" name="file" value="xml">
+                    <label for="xml">PDF</label><br>
+                </div>
+                
+                <input type="submit" value="Download" name="submit" id="download-button">
                 </form>
             </div>
         </div>
 
+
+        <div id="output"></div>
        
 
     </main>
 
+    <script defer type="module" src="./js/update.js"></script>
 
 </body>
 

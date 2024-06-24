@@ -100,3 +100,9 @@ input[type="submit"]:hover, input[type="file"]:hover {
         width: 100%;
     }
 }
+
+#download-set {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
