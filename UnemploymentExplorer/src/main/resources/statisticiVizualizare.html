@@ -48,7 +48,7 @@
                             <a href="munca.html" class="button dropdown-element">Muncă</a>
                         </div>
                         <a href="statisticiVizualizare.html" class="button">Vizualizare somaj</a>
-                        <a href="comparareCuAlteTari.html" class="button">Comparație între județe</a>
+                        <a href="comparareCuAlteJudete.html" class="button">Comparație între județe</a>
                         <a href="predictiiRate.html" class="button">Predicții șomaj</a>
                         <a href="ministerulMuncii.html" class="button">Ministerul Muncii</a>
                         <a href="despre.html" class="button">Despre</a>
@@ -157,28 +157,7 @@
                         <input type="number" id="perioadaDeTimpStart" name="perioadaDeTimp" min="2000" max="2020" value="2022">
                         <input type="number" id="perioadaDeTimpEnd" name="perioadaDeTimp" min="2000" max="2020" value="2022">
                     </div>
-    
-                    <div class="filter-element">
-                        <label for="VenitStart">Venit:</label>
-                        <input type="number" id="VenitStart" name="Venit" min="0" max="100000" value="2000">
-                        <input type="number" id="VenitEnd" name="Venit" min="0" max="100000" value="10000">
-                    </div>
-    
-                    <div class="filter-element" >
-                        <label for="RataSomajStart">Rata Somaj</label>
-                        <input type="number" id="RataSomajStart" name="RataSomaj" min="0" max="100" value="0.5">
-                        <input type="number" id="RataSomajEnd" name="RataSomaj" min="0" max="100" value="10">
-                    </div>
-    
-    
-                    <div class="filter-element">
-                        <label for="grafType">Tipul de grafic:</label>
-                        <select name="grafType" id="grafType">
-                            <option value="0">Bară</option>
-                            <option value="1">Linie</option>
-                            <option value="2">Cerc</option>
-                        </select>
-                    </div>
+
     
                     <div class="filter-element button-container">
                         <button id="filterButton" onclick="updateChart()">Filtrează</button>
