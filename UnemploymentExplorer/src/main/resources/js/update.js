@@ -100,3 +100,85 @@ document.getElementById('upload-file').addEventListener('change', function() {
     updateAvailableFiles();
 });
 
+
+document.getElementById("download-button").addEventListener("click", function(e){
+    e.preventDefault();
+
+
+    const year = document.getElementById("download-an").value;
+    const month = document.getElementById("download-luna").value;
+    const type = document.getElementById("download-tip").value;
+    if(!year || !month || !type){
+        alert("Selectati anul, luna si tipul fisierului!");
+        return; 
+    }
+
+    const csvRadio = document.getElementById("csv");
+    const jsonRadio = document.getElementById("json");
+    const pdfRadio = document.getElementById("pdf");
+    if(!csvRadio.checked && !jsonRadio.checked && !pdfRadio.checked){
+        alert("Selectati formatul in care doriti sa descarcati fisierul!");
+        return;
+    }
+
+    function determineFormat() {
+        return csvRadio.checked ? "csv" : jsonRadio.checked ? "json" : "pdf";
+    }
+
+    function determineMimeType(format) {
+        return format === "csv" ? 'text/csv' : format === "json" ? 'application/json' : 'application/pdf';
+    }
+
+    function handleSuccess(data, year, month, type) {
+        const format = determineFormat();
+        const mimeType = determineMimeType(format);
+        const blob = new Blob([data], { type: mimeType });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `${year}-${month}-${type}.${format}`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    const format = determineFormat();
+
+    if (format === "pdf") {
+        $.ajax({
+            url: "../php/repository/downloadFile.php",
+            type: "POST",
+            data: {
+                year: year,
+                month: month,
+                type: type,
+                format: format
+            },
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function(data) {
+                handleSuccess(data, year, month, type);
+            },
+            error: function(xhr, status, error) {
+                console.error("Download failed:", status, error);
+            }
+        });
+    } else {
+        $.ajax({
+            url: "../php/repository/downloadFile.php",
+            type: "POST",
+            data: {
+                year: year,
+                month: month,
+                type: type,
+                format: format
+            },
+            success: function(data) {
+                handleSuccess(data, year, month, type);
+            },
+            error: function(xhr, status, error) {
+                console.error("Download failed:", status, error);
+            }
+        });
+    }
+});
