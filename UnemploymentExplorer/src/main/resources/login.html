@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unemployment Explorer login</title>
     <link rel="stylesheet" type="text/css" href="./css/admin_styles.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./js/login.js"></script> 
+
 </head>
 
 <body>
@@ -15,17 +18,23 @@
     </header>
 
     <main>
-        <form>
-            <label for="username">Utilizator:</label><br>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Parolă:</label><br>
-            <input type="password" id="password" name="password"><br><br>
+        <form  id="login-form" >
+            <label for="username">Username</label>
+        <input type="text" id="username" name="username"> <br>                
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <br><br>
+            <br><br>
             
             
-            <a href="admin.html" class="button"><div>Login</div></a>
-            <a href="home.html" class="button"><div>Back</div></a>
+            <button class="button" type="submit">Login</button>
+            <a href="home.html" class="button">Back</a>
             
         </form>
+        <br>
+        <div id="error-message" style=" background-color: rgba(255, 255, 255, 0.8);  font-family: Arial, sans-serif;"></div>
+
+        
     </main>
 
 </body>
