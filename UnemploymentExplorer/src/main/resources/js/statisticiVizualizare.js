@@ -57,17 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     acc[row.an].push(row);
                     return acc;
                 }, {})).map(year => {
-                    const dataForYear = data.filter(item => item.an === parseInt(year)); // asigură-te că year este tratat ca număr întreg
+                    const dataForYear = data.filter(item => item.an === parseInt(year));  
                     return {
                         label: `Anul ${year}`,
                         data: labels.map(luna => {
                             const dataForLuna = dataForYear.find(item => item.luna === luna);
-                            return dataForLuna["nr_someri"]; // returnează valoarea dorită sau 0 dacă nu există
+                            return dataForLuna["nr_someri"];
                         }),
                         backgroundColor: colors[year],
                         borderColor: borderColors[year],
                         borderWidth: 1,
-                        group: year // setează grupul pentru a grupa barele pe aceeași categorie de axă X
+                        group: year 
                     };
                 });
                 
@@ -212,7 +212,7 @@ document.getElementById('filterButton').addEventListener('click', postParamCheck
                 url: '../php/repository/testService.php',
                 type: 'POST',
                 data: {
-                    judet: document.getElementById('judet').value, // Assuming these values are defined similarly
+                    judet: document.getElementById('judet').value, 
                     educatie: document.getElementById('educatie').value,
                     mediu: document.getElementById('mediu').value,
                     sex: document.getElementById('gen').value,
@@ -225,20 +225,19 @@ document.getElementById('filterButton').addEventListener('click', postParamCheck
                 },
                 success: function(response) {
                     console.log(response);
-                    resolve(response); // Resolve the promise with the response
+                    resolve(response); 
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr);
-                    reject(xhr); // Reject the promise
+                    reject(xhr);
                 }
             });
         });
     }
     
-    // Step 2: Use async/await to wait for the AJAX call to complete
     async function postParamCheck() {
         try {
-            const response = await performAjaxCall(); // Wait for the AJAX call to complete
+            const response = await performAjaxCall(); 
             console.log(response);
             return JSON.parse(response);
         } catch (error) {
