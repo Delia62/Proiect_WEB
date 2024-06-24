@@ -47,6 +47,7 @@
     <main style="padding-top: 150px;">  
 
         <section id="search-container">
+            <h2 style="display: none;">abc</h2>
             <form id="search-form" style="margin-bottom: 50px;">
                 <input type="text" id="search-box" placeholder="Search datasets...">
                 <div id="suggestions-container" style=" position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 12px 16px; margin-top: 40px; cursor: pointer;" ></div>
@@ -71,7 +72,7 @@
 
 
                 <form >
-                    <label for="file">Selecteaza fisierul:</label><br>
+                    <label >Selecteaza fisierul:</label><br>
                     <select name="upload-an" id="upload-an" >
                         <option value="2019">2019</option>
                         <option value="2020">2020</option>
@@ -124,7 +125,7 @@
                 </div>
                 <br>
 
-                <label for="file">Selecteaza modalitatea de exportare:</label><br>
+                <label>Selecteaza modalitatea de exportare:</label><br>
                 <div>
                     <div class="radio-container">
                     <input type="radio" id="csv" name="file" value="csv">
@@ -151,7 +152,7 @@
 
     </main>
 
-    <script defer type="module" src="./js/update.js"></script>
+    <script type="module" src="./js/update.js"></script>
 
 </body>
 

@@ -45,9 +45,9 @@ button:hover{
     border-radius: 0 5px 5px 0;
 }
 #button-pack{
-    padding: none;
+    padding: 0;
     border: none;
-    margin: none;
+    margin: 0;
     
     display: flex;
     justify-content: flex-start;
