@@ -21,8 +21,26 @@ body {
 .charts{
     max-width: 800px;
     height: 450px;
-    padding: 5px;
+    padding: 20px;
     margin: 0 auto;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+select {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
 }
 
 main { 
@@ -39,7 +57,7 @@ header {
     grid-template-columns: 50% 50%;
     background-color: #4CAF50;
     color: white;
-    padding: 1rem 0rem;
+    padding: 40px 0px;
     justify-content: space-around;
     width: 100%;
 }
@@ -203,6 +221,7 @@ nav {
     contain: size;
     z-index: 1;
     overflow: unset;
+
 }
 
 
@@ -393,6 +412,21 @@ nav a  {
     background-color: #ddd;
 }
 
+.main-container{
+  overflow-x: auto;
+}
+
+.main-container table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.main-container th, .main-container td{
+    word-wrap: break-word; /* Ensures content within cells does not overflow */
+    max-width: 200px;
+}
+
 @media screen and (max-width: 900px) {
     .menu-icon {
         display: block;
@@ -408,27 +442,35 @@ nav a  {
     }
    
     #search-container {
+        width: 90%;
         margin-right: 0;
     }
 
     #search-box {
         flex: 1;
-        padding: 0.5rem;
-        margin-right: 1rem;
+        width: 100%;
     }
 
     #search-form {
+        width: 90vw;
         display: flex;
         flex-direction: column;
     }
 
     #search-button {
-        margin-top: 1rem;
+        flex:1;
+        width: 100%;
+        padding: 0.5rem;
     }
+
+    .main-container, #main-content{
+        width: 85vw;
+    }
+
 
 }
 @media screen and (min-width: 901px) {
-    /* Stiluri pentru ecrane mari */
+    
     .menu-icon {
         display: none; 
     }

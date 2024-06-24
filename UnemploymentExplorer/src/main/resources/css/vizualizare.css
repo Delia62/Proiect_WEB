@@ -16,7 +16,7 @@
     max-width: 900px;
     height: 450px;
     padding: 50px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 .chart .chart_types{
     text-align: center;
@@ -83,8 +83,27 @@
     overflow-y: auto;
 }
 
+
+@media screen and (max-width: 1200px){
+   
+.vertical-menu {
+    opacity: 0.25; 
+    transition: opacity 0.3s ease; 
+  }
+  
+  .vertical-menu:hover, .vertical-menu.active {
+    opacity: 1; 
+  }
+    
+  #main-content, #main-container {
+    width: 85vw;
+  }
+}
+
+
 @media screen and (max-width: 600px) {
     #main-content {
         width: 20%;
     }
+
 }

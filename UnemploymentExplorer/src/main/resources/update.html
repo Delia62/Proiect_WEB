@@ -27,15 +27,27 @@
                     <a href="admin.html" class="button">Back</a>
                 </div>
                 </li>
+                <li>
+                    <input type="checkbox" id="menu-toggle">
+                    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                    
+                    <div id="menu">
+                        <a href="home.html" class="button">Acasa</a>
+                        <a href="admin.html" class="button">Admin</a>
+                        <a href="update.html" class="button">Import/Export luni</a>
+                        <a href="exportBazaDeDate.html" class="button">Export baza de date</a>
+                        <a class="button" id="logout-button">Logout</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
 
 
-    <main>
+    <main style="padding-top: 150px;">  
 
         <section id="search-container">
-            <form id="search-form">
+            <form id="search-form" style="margin-bottom: 50px;">
                 <input type="text" id="search-box" placeholder="Search datasets...">
                 <div id="suggestions-container" style=" position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 12px 16px; margin-top: 40px; cursor: pointer;" ></div>
                 <button type="submit">Search</button>
@@ -46,15 +58,18 @@
 
 
 
-        <div class="main-container">
+        <!-- <div class="main-container">
             <div class="main-content">
-                <h1>Update fisiere in baza de date</h1>
             </div>
-        </div>
+        </div> -->
        
     
         <div class="main-container">
             <div class="main-content">
+                
+                <h1>Update fisiere in baza de date</h1>
+
+
                 <form >
                     <label for="file">Selecteaza fisierul:</label><br>
                     <select name="upload-an" id="upload-an" >
@@ -111,12 +126,18 @@
 
                 <label for="file">Selecteaza modalitatea de exportare:</label><br>
                 <div>
+                    <div class="radio-container">
                     <input type="radio" id="csv" name="file" value="csv">
                     <label for="csv">CSV</label><br>
+                    </div>
+                    <div class="radio-container">
                     <input type="radio" id="json" name="file" value="json">
                     <label for="json">JSON</label><br>
+                    </div>
+                    <div class="radio-container">
                     <input type="radio" id="pdf" name="file" value="pdf">
                     <label for="pdf">PDF</label><br>
+                    </div>  
                 </div>
                 
                 <input type="submit" value="Download" name="submit" id="download-button">
