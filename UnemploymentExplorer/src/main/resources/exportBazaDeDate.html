@@ -10,6 +10,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./js/checkSession.js"></script>
+    <script defer src="./js/exportBazaDeDate.js"></script>
 </head>
 
 
@@ -48,23 +49,27 @@
         <div class="main-container">
             <div class="main-content">
                 <form >
-                    <label >Selecteaza modalitatea de exportare:</label><br>
-                    <div>
-                    <input type="radio" id="csv" name="file" value="csv">
-                    <label for="csv">CSV</label><br>
-                    <input type="radio" id="json" name="file" value="json">
-                    <label for="json">JSON</label><br>
-                    <input type="radio" id="xml" name="file" value="xml">
-                    <label for="xml">XML</label><br>
-                    </div>
-                    <input type="submit" value="Export" name="submit">
+                    <p>
+                        Exportarea datelor dintr-o bază de date PostgreSQL folosind pg_dump este o metodă eficientă și versatilă pentru a crea o copie de siguranță a bazei de date sau pentru a transfera datele între servere. Utilitarul pg_dump este conceput pentru a salva conținutul unei baze de date PostgreSQL într-un fișier, care poate fi apoi restaurat folosind pg_restore sau comenzi SQL standard.
+                    </p>
+                    <p>
+                        Baza de date este exportată într-un fișier cu extensia .sql, care conține instrucțiuni SQL pentru a recrea baza de date. Acest fișier poate fi apoi importat într-o altă bază de date PostgreSQL folosind utilitarul pg_restore sau comenzi SQL standard.
+                    </p>
+                    <p>
+                        Daca se doreste exportea in alt format, va rog accesati pagina de <a href="update.html">export in format CSV</a>.
+                    </p>
+                    <p>
+                        Pentru a exporta baza de date, apasați pe butonul de mai jos.
+                    </p>
+                    <input type="submit" value="Export" name="submit" id="submitButton">
 
                 </form>
             </div>
         </div>
 
        
-
+        
+        <img id="loadingGif" src="./images/loading.gif" style="display:none; width: 5%; height: auto;" />
     </main>
 
 
