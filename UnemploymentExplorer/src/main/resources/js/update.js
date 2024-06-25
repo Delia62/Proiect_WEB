@@ -7,11 +7,14 @@ let globalAvailableFiles = [];
 updateAvailableFiles();
 
 function updateYears(){
+
+
     let years = Object.keys(globalAvailableFiles);
     years.sort();
     console.log(years);
 
     let downloadYears = document.getElementById("download-an");
+    downloadYears.innerHTML = "";
     for (let i = 0; i < years.length; i++){
         let option = document.createElement("option");
         option.text = years[i];

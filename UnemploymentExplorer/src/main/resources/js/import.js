@@ -42,26 +42,42 @@ export function parseCSV(text, year, month, type) {
 
 
     const regex = /(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))/g;
-    let result = lines.map(line => {
-        let matches = [];
-        let match;
-        while ((match = regex.exec(line)) !== null) {
-            let field = match[1];
-            if (field === undefined) continue; // Skip undefined captures
-            if (field.startsWith('"') && field.endsWith('"')) {
-                field = field.substring(1, field.length - 1).replace(/""/g, '"');
-            }
-            field = field.trim();
-            if (field || matches.length > 0) { // Avoid pushing empty fields, unless it's a middle field
-                matches.push(field);
-            }
-        }
-        // Filter out any trailing empty match, if necessary
-        if (matches.length > 0 && matches[matches.length - 1] === '') {
-            matches.pop();
-        }
-        return matches;
-    });
+    const headerParts = header.split(',').map(part => part.trim());
+const indicesToRemove = [];
+
+// Identify indices of "luna" and "an" columns
+headerParts.forEach((part, index) => {
+    if (part.toLowerCase() === 'luna' || part.toLowerCase() === 'an') {
+        indicesToRemove.push(index);
+    }
+});
+
+// Function to remove specified indices from a row
+function removeColumnsByIndex(row, indices) {
+    return row.filter((_, index) => !indices.includes(index));
+}
+
+// Process each line to remove "luna" and "an" columns
+  let result = lines.map(line => {
+      let matches = [];
+      let match;
+      while ((match = regex.exec(line)) !== null) {
+          let field = match[1];
+          if (field === undefined) continue; // Skip undefined captures
+          if (field.startsWith('"') && field.endsWith('"')) {
+              field = field.substring(1, field.length - 1).replace(/""/g, '"');
+          }
+          field = field.trim();
+          if (field || matches.length > 0) { // Avoid pushing empty fields, unless it's a middle field
+              matches.push(field);
+          }
+      }
+      // Filter out any trailing empty match, if necessary
+      if (matches.length > 0 && matches[matches.length - 1] === '') {
+          matches.pop();
+      }
+      return matches;
+  }).map(row => removeColumnsByIndex(row, indicesToRemove)); // Apply column removal
 
     // Filter out empty ending lines from result
     result = result.filter(line => line.length > 0 && line.some(field => field !== ''));

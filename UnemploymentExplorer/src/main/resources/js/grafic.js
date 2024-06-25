@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Total șomeri', 'Femei', 'Bărbați', 'Șomeri indemizați', 'Rata șomajului (%)', 'Rata șomajului feminină (%)','Rata șomajului masculină (%)'],
+        labels: ['Total șomeri', 'Femei', 'Bărbați', 'Șomeri indemizați'],
         datasets: [{
           label: 'Numărul de șomeri din Alba',
           data: [5533, 2698, 2835, 1975, 3558, 3, 3, 3],
